@@ -1,0 +1,162 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: lightgrey;
+  overflow: hidden;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  margin: auto;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ul {
+  border: 1px solid black;
+  width: 620px;
+  height: 50px;
+  flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+ul li {
+  list-style-type: none;
+  height: inherit;
+  text-align: center;
+  border: 1px solid black;
+  width: 60px;
+  text-align: center;
+}
+ul li:last-child {
+  display: flex;
+  flex-grow: 2;
+}
+
+.red-color {
+  background-color: red;
+}
+.finish p {
+  font-size: 18px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap");
+body {
+  background-color: lightgrey;
+  overflow: hidden;
+}
+
+nav {
+  height: 30px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+nav,
+.container,
+.algo {
+  display: flex;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.algo li:hover a {
+  border-bottom: 1px solid rgb(73, 114, 160);
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+ul li {
+  list-style-type: none;
+  margin: 10px;
+  padding: 10px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 25px;
+  font-family: "Vujahday Script", cursive;
+}
+.logo span {
+  font-size: 25px;
+  color: rgb(68, 110, 158);
+}
+
+.exploration-mode-drop-down {
+  margin-right: 50px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.exploration-mode-drop-down ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.e-lecture-mode li {
+  background-color: lightgray;
+  display: none;
+  border: 1px solid rgb(92, 91, 91);
+  border-radius: 5px;
+}
+
+.e-lecture-mode li:hover {
+  border: 1px solid rgb(73, 114, 160);
+}
+.exploration-mode-drop-down ul li:hover {
+  cursor: pointer;
+}
+.exploration-mode-drop-down ul li:hover .e-lecture-mode li {
+  display: block;
+  align-items: flex-start;
+  position: absolute;
+  margin-top: 0px;
+}
+
+/* Styling the bars */
+
+.display-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 80px auto;
+  align-items: flex-end;
+  height: 250px;
+}
+
+.bar {
+  width: 40px;
+  background-color: rgb(96, 143, 160);
+  margin: 10px;
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Funny ! :) No idea came to my mind to put the numbers at the top of the bars when the numbers are smaller. push-up class is only for the numbers 5, 6 and 7 */
+
+.bar .push-up {
+  padding: 10px;
+}

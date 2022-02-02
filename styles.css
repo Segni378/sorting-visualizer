@@ -71,20 +71,36 @@ nav {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
 
+.sort-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+}
 nav,
 .container,
-.algo {
+.algos {
   display: flex;
 }
 a {
   text-decoration: none;
   color: black;
 }
-.algo li:hover a {
+.algos li:hover a,
+.algo.selected {
   border-bottom: 1px solid rgb(73, 114, 160);
   cursor: pointer;
   padding-bottom: 10px;
 }
+.bar {
+  transition: all 0.4s ease-out;
+}
+.bar.mark {
+  background-color: #008000;
+}
+.bar.done {
+  background-color: #FFA500;
+}
+
 ul li {
   list-style-type: none;
   margin: 10px;
@@ -159,4 +175,75 @@ ul li {
 
 .bar .push-up {
   padding: 10px;
+}
+
+
+/* user defined input styles */
+
+.user-defined, .use-defined-input 
+{
+  cursor : pointer;
+}
+.user-defined-input {
+  display: none;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+}
+
+.user-defined-input.active {
+  opacity: 1;
+  display: block;
+}
+
+#user-input {
+  width: 200px;
+  height: 18px;
+  border: none;
+  padding: 2px 5px 2px 5px;
+  outline: none;
+  background-color: darkgrey;
+}
+
+.service-container {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  margin-bottom: 15px;
+  
+}
+.show-service {
+  background-color: rgb(94, 125, 136);
+  width: 50px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.show{
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  height: 10px;
+  width: 10px;
+  transform: rotate(136deg);
+  transition: all 0.15s ease-in; 
+}
+.show.active {
+  transform: rotate(-46deg);
+}
+.user-defined {
+  padding: 5px;
+  background-color: rgb(96, 143, 160);
+  text-align: center;
+  border-radius: 5px;
+}
+.manage-speed {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+}
+.manage-speed span {
+  font-size: 18px;
+  margin-right: 5px;
 }

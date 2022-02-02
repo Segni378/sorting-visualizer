@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bubble Sort</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
+   
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -26,16 +26,19 @@
         <div class = "container">
             <div class = "logo"><span>A</span>lgo<span>SI</span>mplified</div>
             <div>
-                <ul class = "algo">
-                    <li><a href="#">BUBBLE</a></li>
-                    <li><a href="#">SELECTION</a></li>
-                    <li><a href="#">INSERTION</a></li>
-                    <li><a href="#">MERGE</a></li>
-                    <li><a href="#">QUICK</a></li>
-                    <li><a href="#">COUNTING</a></li>
+                <ul class = "algos">
+                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(0)">BUBBLE</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" onClick="chooseAlgo(1)">SELECTION</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(2)">INSERTION</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(3)">MERGE</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(4)">QUICK</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(5)">COUNTING</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" onclick="sort()">SORT</a></li>
+                    <li></li>
                 </ul>
             </div>
         </div>
+        
         <div class = "exploration-mode-drop-down">
            <ul>
                <li><a href="#">Exploration Mode <i class="fas fa-caret-down"></i></a>
@@ -46,12 +49,32 @@
            </ul>
         </div>
     </nav>
-
+    
     <!-- end of nav bar -->
     
     <!--  The bars go here -->
     <div class = "display-area">
         
     </div>
+
+    <div class = "service-container">
+        <div class="show-service">
+            <div class="show"></div>
+        </div>
+        <div class="user-defined-input">
+            <label for="user-defined">Enter your input: </label>
+            <input type="text" name="user-defined" id="user-input">
+            <label for="user-defined" class="user-defined">Create</label>        
+        </div>
+    </div>
+    
+    <div class="manage-speed">
+        <label for="rangeInput"> <span>Speed</span></label>
+        <input type="range" id="speed" value="0" name="rangeInput" min="0" max="50" onchange="changeSpeed(this.value);">
+    </div>
+
+    <script src="app.js" ></script>
+    <script src="sortingAlgorithms.js"></script>
+    <script src="visualize.js"></script>
 </body>
 </html>

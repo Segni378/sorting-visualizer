@@ -57,8 +57,15 @@ ul li:last-child {
 } */
 
 @import url("https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
 body {
   background-color: lightgrey;
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -76,6 +83,7 @@ nav {
   bottom: 10px;
   left: 15px;
 }
+
 nav,
 .container,
 .algos {
@@ -95,12 +103,20 @@ a {
   transition: all 0.4s ease-out;
 }
 .bar.mark {
-  background-color: #008000;
+   background-color: #008000; 
+}
+.bar.unsorted {
+  background-color: #DC143C;
 }
 .bar.done {
   background-color: #FFA500;
 }
-
+.bar.swap {
+  background-color: #a79d8a;
+}
+.bar.transformDown {
+  transform: translateY(90px);
+}
 ul li {
   list-style-type: none;
   margin: 10px;
@@ -156,7 +172,8 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 80px auto;
+  margin-top: 80px;
+  margin-bottom: 30px;
   align-items: flex-end;
   height: 250px;
 }
@@ -169,15 +186,42 @@ ul li {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  padding-bottom: 5px;
 }
-
+.bar p {
+  padding: 15px;
+}
 /* Funny ! :) No idea came to my mind to put the numbers at the top of the bars when the numbers are smaller. push-up class is only for the numbers 5, 6 and 7 */
-
-.bar .push-up {
-  padding: 10px;
+.bar.push-up {
+  padding: 15px;
 }
+.colorContainer {
+  display: flex;
+  margin-bottom: 5px;
+  margin-left: 10px;
 
 
+}
+.color-codes {
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50px;
+  text-align: center;
+}
+.Grid-container {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  justify-content: center;
+  gap: center;
+}
+.color {
+  margin-right: 10px;
+}
 /* user defined input styles */
 
 .user-defined, .use-defined-input 

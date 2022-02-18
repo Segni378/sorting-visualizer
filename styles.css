@@ -1,62 +1,8 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: lightgrey;
-  overflow: hidden;
-}
-
-.title {
-  display: flex;
-  justify-content: center;
-}
-.container {
-  margin: auto;
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.ul {
-  border: 1px solid black;
-  width: 620px;
-  height: 50px;
-  flex-flow: row wrap;
-  display: flex;
-  flex-flow: row wrap;
-  text-align: center;
-}
-
-ul li {
-  list-style-type: none;
-  height: inherit;
-  text-align: center;
-  border: 1px solid black;
-  width: 60px;
-  text-align: center;
-}
-ul li:last-child {
-  display: flex;
-  flex-grow: 2;
-}
-
-.red-color {
-  background-color: red;
-}
-.finish p {
-  font-size: 18px;
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
-} */
-
 @import url("https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap");
+
+:root {
+  --transition: all 0.3s ease-out;
+}
 * {
   margin: 0;
   padding: 0;
@@ -78,12 +24,6 @@ nav {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
 
-.sort-btn {
-  position: absolute;
-  bottom: 10px;
-  left: 15px;
-}
-
 nav,
 .container,
 .algos {
@@ -103,13 +43,13 @@ a {
   transition: all 0.4s ease-out;
 }
 .bar.mark {
-   background-color: #008000; 
+   background-color: #FFA500; 
 }
 .bar.unsorted {
   background-color: #DC143C;
 }
 .bar.done {
-  background-color: #FFA500;
+  background-color: #008000;
 }
 .bar.swap {
   background-color: #a79d8a;
@@ -146,6 +86,14 @@ ul li {
   color: black;
 }
 
+.sort-btn {
+  background-color: #608FA0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.sort-btn:hover a{
+  border: none;
+}
 .e-lecture-mode li {
   background-color: lightgray;
   display: none;
@@ -176,10 +124,13 @@ ul li {
   margin-bottom: 30px;
   align-items: flex-end;
   height: 250px;
+  max-width: 100%;
+  
 }
 
 .bar {
-  width: 40px;
+  max-width: 40px;
+  min-width: 15px;
   background-color: rgb(96, 143, 160);
   margin: 10px;
   text-align: center;
@@ -192,8 +143,8 @@ ul li {
   padding: 15px;
 }
 /* Funny ! :) No idea came to my mind to put the numbers at the top of the bars when the numbers are smaller. push-up class is only for the numbers 5, 6 and 7 */
-.bar.push-up {
-  padding: 15px;
+.bar .push-up {
+  padding-bottom: 18px;
 }
 .colorContainer {
   display: flex;
@@ -284,10 +235,115 @@ ul li {
 }
 .manage-speed {
   margin-top: 40px;
+  padding: 10px;
   display: flex;
   align-items: center;
+}
+.manage-speed input {
+  height:10px;
 }
 .manage-speed span {
   font-size: 18px;
   margin-right: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height:16px;
+  width: 16px;
+  margin-top: -5px;
+  background-color: rgb(235, 64, 64);
+  border-radius: 50%;
+}
+input[type="range"] {
+  /* appearance:none; */
+  position: relative;
+  -webkit-appearance: none;
+   outline: none;
+   width: 200px;
+   background: transparent;
+
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 5px;
+
+  background-color: rgb(61, 60, 60);
+  cursor: pointer;
+}
+
+.menu-icon{
+  display: none;
+  margin: auto 10px;
+  font-size: 25px;
+  color:rgb(61, 60, 60);
+  cursor: pointer;
+}
+.algos {
+  transition: all 0.4s ease-out;
+} 
+.algos.active {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 53px;
+  left: 0;
+  width: 90%;
+  height: 400px;
+  background-color: rgba(0,0,0,0.5);
+  padding-left: 10px;
+  backdrop-filter: blur(0.3rem);
+}
+
+@media (max-width: 992px) and (min-width: 662px) {
+  .bar {
+    margin: 0 5px;
+  }
+  .algos {
+    display: none;
+  }
+  .exploration-mode-drop-down {
+    display: none;
+  }
+  .menu-icon {
+    display: block;
+  }
+
+  .algo {
+    color: #fff;
+  }
+  .sort-btn {
+    width: 100px;
+    text-align: center;
+  }
+  .user-defined-input input {
+    margin: 8px 0;
+  }
+}
+@media (max-width: 661px){
+  .bar {
+    margin: 0 2px;
+  }
+  .algos {
+    display: none;
+  }
+  .exploration-mode-drop-down {
+    display: none;
+  }
+  .menu-icon {
+    display: block;
+  }
+  .algo {
+    color: #fff;
+  }
+  .sort-btn {
+    width: 100px;
+    text-align: center;
+  }
+  .user-defined-input input {
+    margin: 8px 0;
+  }
 }

@@ -1,18 +1,17 @@
 class visualizeSorting {
   constructor(list, time) {
     this.list = list;
-    this.time = 500 / time;
+    // this.time = 500 / time;
   }
 
   marksorted = async (sortedIndex) => {
-      for (let i=sortedIndex-1; i >= 0; i--) {
-          this.list[i].classList.add("done");
-      }
-  }
+    for (let i = sortedIndex - 1; i >= 0; i--) {
+      this.list[i].classList.add("done");
+    }
+  };
   markUnsorted = async (currentUnsortedIndex) => {
-    for (let i = currentUnsortedIndex; i < this.list.length; i++){
-      if(this.list[i].classList.contains("unsorted"))
-      continue;
+    for (let i = currentUnsortedIndex; i < this.list.length; i++) {
+      if (this.list[i].classList.contains("unsorted")) continue;
       this.list[i].classList.add("unsorted");
     }
   };
@@ -30,7 +29,7 @@ class visualizeSorting {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
-      }, this.time);
+      }, 900 / changeSpeed(speed.value));
     });
   };
 
@@ -49,15 +48,25 @@ class visualizeSorting {
 
     let width1 = this.list[index1].clientWidth;
     let width2 = this.list[index2].clientWidth;
+    
+    let margin;
 
+    let width = getWidth();
+    if (width <= 661) {
+      margin = 4;
+    } else if (width >= 662 && width <= 992) {
+      margin = 10;
+    } else {
+      margin = 20;
+    }
+    
     this.list[index1].style.transform = `translateX(${
-      width1 * (index2 - dataSet1) + (index2 - dataSet1) * 20
+      width1 * (index2 - dataSet1) + (index2 - dataSet1) * Number(margin)
     }px)`;
     this.list[index2].style.transform = `translateX(${-(
       width2 * (dataSet2 - index1) +
-      (dataSet2 - index1) * 20
+      (dataSet2 - index1) * Number(margin)
     )}px)`;
-
     // Swapping the elements in the array using new array, and updating the original array.
     // Because this.list is read only, we cannot change the content directly. So this method is used.
 
@@ -74,24 +83,8 @@ class visualizeSorting {
   };
 
   swap = async (index1, index2) => {
-    // await this.delay();
-
-    // const value1 = Number(this.list[index1].getAttribute("value"));
-    // const value2 = Number(this.list[index2].getAttribute("value"));
-    // const number_disp1 = this.list[index1].querySelector(".number");
-    // const number_disp2 = this.list[index2].querySelector(".number");
-
     await this.move(index1, index2);
     await this.delay();
-
     return this.list;
-    // this.list[index1].setAttribute("value", value2);
-    // this.list[index2].setAttribute("value", value1);
-
-    // number_disp1.textContent = value2;
-    // number_disp2.textContent = value1;
-
-    // this.list[index1].style.height = `${4 * value2}px`;
-    // this.list[index2].style.height = `${4 * value1}px`;
   };
 }

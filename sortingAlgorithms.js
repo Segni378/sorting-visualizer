@@ -17,10 +17,9 @@ class sortingAlgorithms {
   };
 
   colorCodeGenerator = (colors) => {
-
     const colorCodes = document.querySelector(".Grid-container");
-
-    for(let i = 0; i < colors.length; i++) {
+    colorCodes.innerHTML = "";
+    for (let i = 0; i < colors.length; i++) {
       const colorContainter = document.createElement("div");
       colorContainter.classList.add("colorContainer");
       const message = document.createElement("p");
@@ -34,19 +33,21 @@ class sortingAlgorithms {
       colorContainter.appendChild(color);
       colorContainter.appendChild(message);
       colorCodes.appendChild(colorContainter);
-
     }
-  }
+  };
+
+  // Bubble Sort
+
   bubbleSort = async () => {
     const colors = [
       {
-        color: "#008000",
+        color: "#FFA500",
         message: "Comparison",
       },
       {
-        color: "#FFA500",
-        message: "Sorted"
-      }
+        color: "#008000",
+        message: "Sorted",
+      },
     ];
     this.colorCodeGenerator(colors);
 
@@ -57,7 +58,6 @@ class sortingAlgorithms {
 
         if (await this.visualize.compare(j, j + 1)) {
           this.list = await this.visualize.swap(j, j + 1);
-          console.log(this.list[j + 1]);
         }
         await this.visualize.delay();
         await this.visualize.unmark(j);
@@ -67,7 +67,7 @@ class sortingAlgorithms {
     }
     this.list[0].classList.add("done");
     // This is to prevent the user trying to sort the already sorted input multiple times.
-    // And the other thing is, previously nothing was happening, actually, in the DOM except the visualization. The elements are still where 
+    // And the other thing is, previously nothing was happening, actually, in the DOM except the visualization. The elements are still where
     // they are now
     // conceptually. Only the array elements were being swapped. By calling the below function we will override the previous position of the
     // elements
@@ -76,16 +76,18 @@ class sortingAlgorithms {
     return this.list;
   };
 
+  // Selection Sort
+
   selectionSort = async () => {
     let min;
 
     const colors = [
       {
-        color: "#008000",
+        color: "#FFA500",
         message: "Comparison",
       },
       {
-        color: "#FFA500",
+        color: "#008000",
         message: "Sorted subarray",
       },
 
@@ -142,15 +144,16 @@ class sortingAlgorithms {
     makeBars(this.getValues(this.list), "done");
   };
 
-  insertionSort = async () => {
+  // Insertion Sort
 
+  insertionSort = async () => {
     const colors = [
       {
-        color: "#008000",
+        color: "#FFA500",
         message: "Comparison",
       },
       {
-        color: "#FFA500",
+        color: "#008000",
         message: "Sorted subarray",
       },
 
@@ -195,4 +198,53 @@ class sortingAlgorithms {
     // This is to prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
   };
+
+  // Merge Sort
+merge = (arr,lb, mid, ub) => {
+
+  let i = lb;
+	let k = lb;
+	let j = mid + 1;
+	let temp = [];
+	while( i <= mid && j <= ub) {
+		if (arr[i] <= arr[j]) {
+			temp[k] = arr[i];
+			i++;
+		}
+		else {
+			temp[k] = arr[j];
+			j++;
+		}
+		k++;
+	}
+	
+	if (i > mid) {
+		while(j <= ub) {
+			temp[k] = arr[j];
+			j++;
+			k++; 
+		}
+	}
+	else if(j > ub) {
+		while(i <= mid) {
+			temp[k] = arr[i];
+			i++;
+			k++;
+		}
+	}
+	
+	// Copying the sorted form to the main array
+	for (let m = lb; m <= ub; m++) {
+		arr[m] = temp[m];
+	}
+	
+}
+  mergeSort = (arr, lb, ub) => {
+    if (lb < ub) {
+		let mid = (lb + ub) / 2;
+		mergeSort(arr, lb, mid);
+		mergeSort(arr, mid+1, ub);
+		merge(arr, lb, mid, ub);	
+	}
+  }
 }

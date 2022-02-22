@@ -67,10 +67,7 @@ class sortingAlgorithms {
     }
     this.list[0].classList.add("done");
     // This is to prevent the user trying to sort the already sorted input multiple times.
-    // And the other thing is, previously nothing was happening, actually, in the DOM except the visualization. The elements are still where
-    // they are now
-    // conceptually. Only the array elements were being swapped. By calling the below function we will override the previous position of the
-    // elements
+    // And the other thing is, previously nothing was happening, actually, in the DOM except the visualization. The elements are still where now conceptually. Only the array elements were being swapped. By calling the below function we will override the previous position of the elements
 
     makeBars(this.getValues(this.list), "done");
     return this.list;
@@ -200,51 +197,162 @@ class sortingAlgorithms {
   };
 
   // Merge Sort
-merge = (arr,lb, mid, ub) => {
-
-  let i = lb;
-	let k = lb;
-	let j = mid + 1;
-	let temp = [];
-	while( i <= mid && j <= ub) {
-		if (arr[i] <= arr[j]) {
-			temp[k] = arr[i];
-			i++;
-		}
-		else {
-			temp[k] = arr[j];
-			j++;
-		}
-		k++;
-	}
-	
-	if (i > mid) {
-		while(j <= ub) {
-			temp[k] = arr[j];
-			j++;
-			k++; 
-		}
-	}
-	else if(j > ub) {
-		while(i <= mid) {
-			temp[k] = arr[i];
-			i++;
-			k++;
-		}
-	}
-	
-	// Copying the sorted form to the main array
-	for (let m = lb; m <= ub; m++) {
-		arr[m] = temp[m];
-	}
-	
+ selectColor(colorNum, colors){
+    if (colors < 1) colors = 1; // defaults to one color - avoid divide by zero
+    return "hsl(" + (colorNum * (360 / colors) % 360) + ",100%,50%)";
 }
-  mergeSort = (arr, lb, ub) => {
-    if (lb < ub) {
-		let mid = (lb + ub) / 2;
-		mergeSort(arr, lb, mid);
-		mergeSort(arr, mid+1, ub);
-		merge(arr, lb, mid, ub);	
-	}
-  }
+  mergeSort = async () => {
+    console.log(this.list);
+     
+      // for (var i = 0; i < this.list.length; i++) {
+      //   let color = this.selectColor(Math.floor(Math.random() * 10), 10);
+      //   this.list[i].style.backgroundColor = color;
+      // }
+    // await this.visualize.delay();
+    await this.MergeDivider(0, this.size - 1);
+    for (let counter = 0; counter < this.size; ++counter) {
+      this.list[counter].classList.add("done");
+    }
+  };;
+
+  MergeDivider = async (start, end) => {
+    if (start < end) {
+      let mid = start + Math.floor((end - start) / 2);
+      await this.MergeDivider(start, mid);
+      await this.MergeDivider(mid + 1, end);
+      await this.Merge(start, mid, end);
+    }
+  };
+
+  Merge = async (start, mid, end) => {
+    let newList = new Array();
+    let frontcounter = start;
+    let midcounter = mid + 1;
+    let newPosStart = start;
+    let newPositionHolder = [];
+    // console.log(start, end);
+    while (frontcounter <= mid && midcounter <= end) {
+      let fvalue = Number(this.list[frontcounter].getAttribute("value"));
+      let svalue = Number(this.list[midcounter].getAttribute("value"));
+      if (fvalue >= svalue) {
+        newList[newPosStart] = this.list[midcounter];
+        newPosStart++;
+        ++midcounter;
+      } else {
+        newList[newPosStart] = this.list[frontcounter];
+        newPosStart++;
+        ++frontcounter;
+      }
+    }
+    while (frontcounter <= mid) {
+      // console.log("First",newList);
+      newList[newPosStart] = this.list[frontcounter];
+      newPosStart++;
+      // console.log("Second",newList);
+      ++frontcounter;
+    }
+    
+    while (midcounter <= end) {
+      newList[newPosStart] = this.list[midcounter];
+      newPosStart++;
+      ++midcounter;
+    }
+
+
+    for (let c = start; c <= end; ++c) {
+      await this.visualize.mark(c);
+      this.list[c].setAttribute("class", "bar mark")
+    }
+
+  
+    for(let i = start; i <= end; i++) {
+        // if (newList.indexOf(this.list[i]) == -1) {
+        //   console.log("Start " + start, "End " + end);
+        //   console.log("The new List", newList);
+        //   console.log("Item", this.list[i]);
+        //   console.log("List", this.list);
+        // }
+          newPositionHolder.push(newList.indexOf(this.list[i]));
+     }
+
+
+    await this.visualize.delay();
+    await this.visualize.delay();
+    
+      for(let i = start, pos=0; i <= end && pos < newPositionHolder.length; i++, pos++) {
+        await this.visualize.moveToNextPos(i, newPositionHolder[pos]);     
+      }
+
+    await this.visualize.delay();
+    await this.visualize.delay();
+
+     let temp = [];
+    
+     for (let i = 0; i < this.list.length; i++) {
+      if(i>=start && i <= end) {
+        temp.push(newList[i]);
+      }
+      else temp.push(this.list[i]);
+     }
+     this.list= temp;
+     this.visualize.updateList(this.list);
+    //  for(let i = 0; i < this.list.length; i ++) {
+    //   //  if(i>=start&&i<=end) {
+    //   //    console.log("index " + i, "Value : " + this.list[i].getAttribute("value"));
+    //   //  }
+    //    console.log(Number(this.list[i].getAttribute("value")) + " ");
+    //  }
+
+     
+    for (let c = start; c <= end; ++c) {
+      this.list[c].setAttribute("class", "bar done");
+    }
+  };
+  // Merge = async (start, mid, end) => {
+  //   let newList = new Array();
+  //   let frontcounter = start;
+  //   let midcounter = mid + 1;
+  //   console.log(start, end);
+  //   while (frontcounter <= mid && midcounter <= end) {
+  //     let fvalue = Number(this.list[frontcounter].getAttribute("value"));
+  //     let svalue = Number(this.list[midcounter].getAttribute("value"));
+  //     if (fvalue >= svalue) {
+  //       newList.push(svalue);
+  //       ++midcounter;
+  //     } else {
+  //       newList.push(fvalue);
+  //       ++frontcounter;
+  //     }
+  //   }
+  //   while (frontcounter <= mid) {
+  //     // console.log("First",newList);
+  //     newList.push(Number(this.list[frontcounter].getAttribute("value")));
+  //     // console.log("Second",newList);
+  //     ++frontcounter;
+  //   }
+    
+  //   while (midcounter <= end) {
+  //     newList.push(Number(this.list[midcounter].getAttribute("value")));
+  //     // console.log("First", newList);
+  //     ++midcounter;
+  //   }
+
+  //   console.log("New List",newList);
+  //   for (let c = start; c <= end; ++c) {
+  //     await this.visualize.mark(c);
+  //     // this.list[c].setAttribute("class", "cell current");
+  //   }
+  //   for (
+  //     let c = start, point = 0;
+  //     c <= end && point < newList.length;
+  //     ++c, ++point
+  //   ) {
+  //     await this.visualize.delay();
+  //     this.list[c].setAttribute("value", newList[point]);
+  //     this.list[c].style.height = `${5.1 * newList[point]}px`;
+  //   }
+  //   for (let c = start; c <= end; ++c) {
+  //     this.list[c].setAttribute("class", "bar done");
+  //   }
+  // };
 }

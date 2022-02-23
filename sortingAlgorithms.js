@@ -139,7 +139,7 @@ class sortingAlgorithms {
 
       this.list[i].classList.add("done");
     }
-    // This is to prevent the user trying to sort the already sorted input multiple times.
+    // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
   };
 
@@ -194,23 +194,22 @@ class sortingAlgorithms {
       // await this.visualize.delay();
     }
 
-    // This is to prevent the user trying to sort the already sorted input multiple times.
+    // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
   };
 
   // Merge Sort
  
   mergeSort = async () => {
-    
     const colors = [
       {
         color: "#FFA500",
-        message: "current array to be sorted"
+        message: "current array to be sorted",
       },
       {
         color: "#008000",
-        message: "Merged(after sorting)"
-      }
+        message: "Merged(after sorting)",
+      },
     ];
     this.colorCodeGenerator(colors);
 
@@ -219,6 +218,7 @@ class sortingAlgorithms {
       this.list[counter].classList.add("done");
     }
 
+    // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
   };
 
@@ -232,11 +232,12 @@ class sortingAlgorithms {
   };
 
   Merge = async (start, mid, end) => {
-    let newList = new Array();
+    let newList = new Array(); // This array holds the sorted form the numbers in the subarray in consideration.
     let frontcounter = start;
     let midcounter = mid + 1;
     let newPosStart = start;
-    let newPositionHolder = [];
+    let newPositionHolder = []; // This array holds the new location of the numbers in the subarray in cosideration.
+
 
     while (frontcounter <= mid && midcounter <= end) {
       let fvalue = Number(this.list[frontcounter].getAttribute("value"));
@@ -265,13 +266,16 @@ class sortingAlgorithms {
       ++midcounter;
     }
 
+    /* At this position newList array has the subarray in the sorted form. They are stored starting from the start index. The numbers before this index are by default zero. We are not interested in that. */
 
+    // Mark the subarray in cosideration
     for (let c = start; c <= end; ++c) {
       await this.visualize.mark(c);
       this.list[c].setAttribute("class", "bar mark")
     }
 
-  
+    // The below for loop is used to store the new location of the numbers in the original array(i.e. list). We get that location from the newList array as it is has the sorted form of them. Since newList is an array it each numbers have their corresponding index. That index is pushed to the newPositionHolder array. 
+
     for(let i = start; i <= end; i++) {
       newPositionHolder.push(newList.indexOf(this.list[i]));
      }
@@ -280,12 +284,16 @@ class sortingAlgorithms {
     await this.visualize.delay();
     await this.visualize.delay();
     
+    // Here, the unsorted subarray, will be moved to their corresponding new locations by using the moveToNextPos function in the visualize.js file.
+
       for(let i = start, pos=0; i <= end && pos < newPositionHolder.length; i++, pos++) {
         await this.visualize.moveToNextPos(i, newPositionHolder[pos]);     
       }
 
     await this.visualize.delay();
     await this.visualize.delay();
+
+    // Since updating the this.list directly is not allowed the below code is a work around to do that. While traversing the whole array(i.e. list array) if the index comes to the array in cosideration the list will be updated according to the values sequences in the newList array. 
 
      let temp = [];
     
@@ -297,7 +305,8 @@ class sortingAlgorithms {
      }
      this.list= temp;
      this.visualize.updateList(this.list);
-       
+    
+     // At this location we will mark the sub array as sorted. 
     for (let c = start; c <= end; ++c) {
       this.list[c].setAttribute("class", "bar done");
     }
@@ -332,28 +341,25 @@ class sortingAlgorithms {
    
     await this.quickSort(lb, ub);
 
+    // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
   }
 
   quickSort = async(lb, ub) => {
     if(lb < ub) {
       let partitionPoint = await this.partition(lb, ub);
-      // console.log("Partition: " + partitionPoint);
       await this.quickSort(lb, partitionPoint-1);
       await this.quickSort(partitionPoint + 1, ub);
     }
   }
+
   partition = async (lb, ub) => {
     let pivot = Number(this.list[lb].getAttribute("value"));
 
-    
     let start = lb;
     let end = ub;
-    console.log(this.list);
     while(start <= end) {
 
-
-    
       while(await this.visualize.findGreater(lb, start) || pivot === Number(this.list[start].getAttribute("value"))){
        
         await this.visualize.unmarkGreater(start);
@@ -361,6 +367,7 @@ class sortingAlgorithms {
         
         if(start > this.list.length-1) break;
       }
+
      while(await this.visualize.findSmaller(end, lb)){
       await this.visualize.unmarkSmaller(end);  
       end--;
@@ -378,6 +385,8 @@ class sortingAlgorithms {
     await this.visualize.unmarkSmaller(lb); 
     await this.visualize.delay();
     await this.visualize.delay();
+
+    // Unmark the pivot which was marked in visualize.js since it is not longer pivot after the return statement. 
     this.list[end].style.backgroundColor = "rgb(96, 143, 160)";
     return end;
 

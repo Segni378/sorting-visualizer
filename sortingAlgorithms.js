@@ -16,6 +16,8 @@ class sortingAlgorithms {
     return values;
   };
 
+  // This function is used to creat color code for a particular sorting algorithm.
+
   colorCodeGenerator = (colors) => {
     const colorCodes = document.querySelector(".Grid-container");
     colorCodes.innerHTML = "";
@@ -197,23 +199,28 @@ class sortingAlgorithms {
   };
 
   // Merge Sort
- selectColor(colorNum, colors){
-    if (colors < 1) colors = 1; // defaults to one color - avoid divide by zero
-    return "hsl(" + (colorNum * (360 / colors) % 360) + ",100%,50%)";
-}
+ 
   mergeSort = async () => {
-    console.log(this.list);
-     
-      // for (var i = 0; i < this.list.length; i++) {
-      //   let color = this.selectColor(Math.floor(Math.random() * 10), 10);
-      //   this.list[i].style.backgroundColor = color;
-      // }
-    // await this.visualize.delay();
+    
+    const colors = [
+      {
+        color: "#FFA500",
+        message: "current array to be sorted"
+      },
+      {
+        color: "#008000",
+        message: "Merged(after sorting)"
+      }
+    ];
+    this.colorCodeGenerator(colors);
+
     await this.MergeDivider(0, this.size - 1);
     for (let counter = 0; counter < this.size; ++counter) {
       this.list[counter].classList.add("done");
     }
-  };;
+
+    makeBars(this.getValues(this.list), "done");
+  };
 
   MergeDivider = async (start, end) => {
     if (start < end) {
@@ -230,11 +237,11 @@ class sortingAlgorithms {
     let midcounter = mid + 1;
     let newPosStart = start;
     let newPositionHolder = [];
-    // console.log(start, end);
+
     while (frontcounter <= mid && midcounter <= end) {
       let fvalue = Number(this.list[frontcounter].getAttribute("value"));
       let svalue = Number(this.list[midcounter].getAttribute("value"));
-      if (fvalue >= svalue) {
+      if (fvalue > svalue) {
         newList[newPosStart] = this.list[midcounter];
         newPosStart++;
         ++midcounter;
@@ -245,10 +252,10 @@ class sortingAlgorithms {
       }
     }
     while (frontcounter <= mid) {
-      // console.log("First",newList);
+     
       newList[newPosStart] = this.list[frontcounter];
       newPosStart++;
-      // console.log("Second",newList);
+     
       ++frontcounter;
     }
     
@@ -266,13 +273,7 @@ class sortingAlgorithms {
 
   
     for(let i = start; i <= end; i++) {
-        // if (newList.indexOf(this.list[i]) == -1) {
-        //   console.log("Start " + start, "End " + end);
-        //   console.log("The new List", newList);
-        //   console.log("Item", this.list[i]);
-        //   console.log("List", this.list);
-        // }
-          newPositionHolder.push(newList.indexOf(this.list[i]));
+      newPositionHolder.push(newList.indexOf(this.list[i]));
      }
 
 
@@ -296,63 +297,91 @@ class sortingAlgorithms {
      }
      this.list= temp;
      this.visualize.updateList(this.list);
-    //  for(let i = 0; i < this.list.length; i ++) {
-    //   //  if(i>=start&&i<=end) {
-    //   //    console.log("index " + i, "Value : " + this.list[i].getAttribute("value"));
-    //   //  }
-    //    console.log(Number(this.list[i].getAttribute("value")) + " ");
-    //  }
-
-     
+       
     for (let c = start; c <= end; ++c) {
       this.list[c].setAttribute("class", "bar done");
     }
   };
-  // Merge = async (start, mid, end) => {
-  //   let newList = new Array();
-  //   let frontcounter = start;
-  //   let midcounter = mid + 1;
-  //   console.log(start, end);
-  //   while (frontcounter <= mid && midcounter <= end) {
-  //     let fvalue = Number(this.list[frontcounter].getAttribute("value"));
-  //     let svalue = Number(this.list[midcounter].getAttribute("value"));
-  //     if (fvalue >= svalue) {
-  //       newList.push(svalue);
-  //       ++midcounter;
-  //     } else {
-  //       newList.push(fvalue);
-  //       ++frontcounter;
-  //     }
-  //   }
-  //   while (frontcounter <= mid) {
-  //     // console.log("First",newList);
-  //     newList.push(Number(this.list[frontcounter].getAttribute("value")));
-  //     // console.log("Second",newList);
-  //     ++frontcounter;
-  //   }
-    
-  //   while (midcounter <= end) {
-  //     newList.push(Number(this.list[midcounter].getAttribute("value")));
-  //     // console.log("First", newList);
-  //     ++midcounter;
-  //   }
+  
+  // Quick sort 
 
-  //   console.log("New List",newList);
-  //   for (let c = start; c <= end; ++c) {
-  //     await this.visualize.mark(c);
-  //     // this.list[c].setAttribute("class", "cell current");
-  //   }
-  //   for (
-  //     let c = start, point = 0;
-  //     c <= end && point < newList.length;
-  //     ++c, ++point
-  //   ) {
-  //     await this.visualize.delay();
-  //     this.list[c].setAttribute("value", newList[point]);
-  //     this.list[c].style.height = `${5.1 * newList[point]}px`;
-  //   }
-  //   for (let c = start; c <= end; ++c) {
-  //     this.list[c].setAttribute("class", "bar done");
-  //   }
-  // };
+  quickSortAlgo = async () => {
+    
+    const colors = [
+      {
+        color: "red",
+        message: "pivote",
+      },
+      {
+        color: "darkblue",
+        message: "j value(searching number smaller than pivot from back)",
+      },
+      {
+        color: "purple",
+        message: "i value(searching number greater than pivot from front)"
+      },
+      {
+        color: "#008000",
+        message: "Sorted"
+      },
+    ];
+    this.colorCodeGenerator(colors);
+    
+    let lb = 0;
+    let ub = this.list.length - 1;
+   
+    await this.quickSort(lb, ub);
+
+    makeBars(this.getValues(this.list), "done");
+  }
+
+  quickSort = async(lb, ub) => {
+    if(lb < ub) {
+      let partitionPoint = await this.partition(lb, ub);
+      // console.log("Partition: " + partitionPoint);
+      await this.quickSort(lb, partitionPoint-1);
+      await this.quickSort(partitionPoint + 1, ub);
+    }
+  }
+  partition = async (lb, ub) => {
+    let pivot = Number(this.list[lb].getAttribute("value"));
+
+    
+    let start = lb;
+    let end = ub;
+    console.log(this.list);
+    while(start <= end) {
+
+
+    
+      while(await this.visualize.findGreater(lb, start) || pivot === Number(this.list[start].getAttribute("value"))){
+       
+        await this.visualize.unmarkGreater(start);
+        start++;
+        
+        if(start > this.list.length-1) break;
+      }
+     while(await this.visualize.findSmaller(end, lb)){
+      await this.visualize.unmarkSmaller(end);  
+      end--;
+        if(end < 0) break;
+     }
+       
+      if(start < end) {
+        this.list = await this.visualize.swap(start, end)
+        await this.visualize.unmarkSmaller(end);  
+        await this.visualize.unmarkGreater(start);
+      }
+    }
+
+    this.list = await this.visualize.swap(lb, end);
+    await this.visualize.unmarkSmaller(lb); 
+    await this.visualize.delay();
+    await this.visualize.delay();
+    this.list[end].style.backgroundColor = "rgb(96, 143, 160)";
+    return end;
+
+
+  }
+
 }

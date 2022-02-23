@@ -54,9 +54,25 @@ a {
 .bar.swap {
   background-color: #a79d8a;
 }
+
+
+// For quick sort
+.bar.pivot {
+  background-color: red;
+}
+.bar.smaller {
+  background-color: darkblue;
+}
+.bar.greater {
+  background-color: purple;
+}
+
+
+
 .bar.transformDown {
   transform: translateY(90px);
 }
+
 ul li {
   list-style-type: none;
   margin: 10px;
@@ -297,7 +313,9 @@ input[type="range"]::-webkit-slider-runnable-track {
   padding-left: 10px;
   backdrop-filter: blur(0.3rem);
 }
-
+.manage-speed {
+  z-index: 100;
+}
 @media (max-width: 992px) and (min-width: 662px) {
   .bar {
     margin: 0 5px;
@@ -345,5 +363,13 @@ input[type="range"]::-webkit-slider-runnable-track {
   }
   .user-defined-input input {
     margin: 8px 0;
+  }
+  .color-codes {
+    position: absolute;
+    right: 5px;
+    top: 450px;
+  }
+  .manage-speed {
+    width: 100px;
   }
 }

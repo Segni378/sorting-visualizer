@@ -141,7 +141,6 @@ const sort = () => {
     const list = document.querySelectorAll(".bar");
   
     if(isSorted(list)) {
-      console.log("In the if!");
       alert("Already sorted!");
       return;
     }
@@ -151,8 +150,7 @@ const sort = () => {
     if(algoSelected === 1) algorithm.selectionSort();
     if(algoSelected === 2) algorithm.insertionSort();
     if(algoSelected === 3) algorithm.mergeSort();
-    if(algoSelected === 4) algorithm.quickSort();
-    if(algoSelected === 5) algorithm.coutingSort();
+    if(algoSelected === 4) algorithm.quickSortAlgo();
 }
 const randumNumbers = () => {
   let list = new Array();

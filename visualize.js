@@ -20,13 +20,25 @@ class visualizeSorting {
       this.list[i].classList.remove("unsorted");
   };
   mark = async (index) => {
-    if(this.list[index] === undefined)
-    console.log(index);
     this.list[index].classList.add("mark");
   };
   unmark = async (index) => {
     this.list[index].classList.remove("mark");
   };
+
+  //For quick sort only
+  markSmaller = async (index) => {
+    this.list[index].setAttribute("class", "bar smaller");
+  }
+  markGreater = async (index) => {
+   this.list[index].setAttribute("class", "bar greater");
+  }
+  unmarkSmaller = async (index) => {
+    this.list[index].setAttribute("class", "bar");
+  }
+  unmarkGreater = async (index) => {
+  this.list[index].setAttribute("class", "bar");
+  }
   delay = async () => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -37,10 +49,10 @@ class visualizeSorting {
 
   compare = async (index1, index2) => {
     await this.delay();
-    // console.log(this.list[index1], this.list[index2]);
-    if(this.list[index2] === undefined) {
-      console.log(index2);
-    }
+   
+    // this.mark(index1);
+    // this.mark(index2);
+    
     const value1 = Number(this.list[index1].getAttribute("value"));
     const value2 = Number(this.list[index2].getAttribute("value"));
 
@@ -48,6 +60,21 @@ class visualizeSorting {
     else return false;
   };
 
+  findSmaller = async (index1, index2) => {
+    await this.markSmaller(index1);
+    
+
+    return await this.compare(index1, index2);
+  }
+  findGreater = async (index1, index2) => {
+
+    if(index1 != index2){
+      await this.markGreater(index2);
+      this.list[index1].style.backgroundColor = "red";
+    }
+
+    return await this.compare(index1, index2);
+  }
   updateList = (updatedList) => {
     this.list = updatedList;
   }

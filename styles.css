@@ -387,6 +387,10 @@ input[type="range"]::-webkit-slider-runnable-track {
     right: 5px;
     top: 450px;
   }
+  .generate-new-btn {
+    width: 150px;
+    text-align: center;
+  }
   .manage-speed {
     width: 100px;
   }

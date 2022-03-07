@@ -321,6 +321,51 @@ input[type="range"]::-webkit-slider-runnable-track {
   z-index: 100;
 }
 
+/* Trace code */
+
+.trace-code-container {
+  position: absolute;
+  bottom: 190px;
+  right: 0px;
+  height: 100px;
+  width: 420px;
+}
+
+.parse-comparison-container,.pseudo-code-container {
+  display: flex;
+  padding: 2px;
+}
+.parse-comparison,.pseudo-code {
+  flex: 2;
+  visibility: hidden;
+  background-color: #5E7D88;
+  margin-right: 5px;
+  padding: 20px;
+  
+}
+.parse-comparison.active,.pseudo-code.active {
+  visibility: visible;
+}
+.hide-panel {
+  background-color: rgb(94, 125, 136);
+  width: 50px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0px;
+}
+
+
+.markCode {
+  color: #fff;
+  background-color: rgba(0,0,0,0.5);
+}
+.unmarkCode {
+  color: #000;
+  background-color: rgba(0,0,0,0.5);
+}
+
 @media (min-width:1081px) {
   .generate-new-btn {
     width: 150px;
@@ -394,49 +439,26 @@ input[type="range"]::-webkit-slider-runnable-track {
   .manage-speed {
     width: 100px;
   }
-}
-
-/* Trace code */
-
-.trace-code-container {
-  position: absolute;
-  bottom: 190px;
-  right: 0px;
-  height: 100px;
-  width: 420px;
-}
-
-.parse-comparison-container,.pseudo-code-container {
-  display: flex;
+  .trace-code-container {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 390px;
+    height: 115px;
+    z-index: 1000;
+  }
+  .parse-comparison-container,.pseudo-code-container {
   padding: 10px;
+  margin: 0;
+  background-color: none;
 }
 .parse-comparison,.pseudo-code {
-  flex: 2;
-  visibility: hidden;
-  background-color: #5E7D88;
-  margin-right: 10px;
-  padding: 20px;
-  
+  background-color: rgba(0,0,0,0.7);
+  color: lightgrey;
 }
-.parse-comparison.active,.pseudo-code.active {
-  visibility: visible;
+.show-service, .hide-panel {
+  width: 35px;
+  height: 45px;
 }
-.hide-panel {
-  background-color: rgb(94, 125, 136);
-  width: 50px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto 10px;
 }
 
-
-.markCode {
-  color: #fff;
-  background-color: rgba(0,0,0,0.5);
-}
-.unmarkCode {
-  color: #000;
-  background-color: rgba(0,0,0,0.5);
-}

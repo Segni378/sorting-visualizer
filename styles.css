@@ -12,7 +12,8 @@
 body {
   background-color: lightgrey;
   min-height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
+  position: relative;
 }
 
 nav {
@@ -22,6 +23,7 @@ nav {
   margin-top: 20px;
   padding-bottom: 10px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  max-width: 100%;
 }
 
 nav,
@@ -54,7 +56,9 @@ a {
 .bar.swap {
   background-color: #a79d8a;
 }
-
+.bar.min {
+  background-color: #0bdee7;
+}
 
 // For quick sort
 .bar.pivot {
@@ -102,12 +106,12 @@ ul li {
   color: black;
 }
 
-.sort-btn {
+.sort-btn, .generate-new-btn {
   background-color: #608FA0;
   padding: 10px;
   border-radius: 5px;
 }
-.sort-btn:hover a{
+.algos .sort-btn:hover a, .algos .generate-new-btn:hover a{
   border: none;
 }
 .e-lecture-mode li {
@@ -237,11 +241,11 @@ ul li {
   border-bottom: 2px solid #fff;
   height: 10px;
   width: 10px;
-  transform: rotate(136deg);
-  transition: all 0.15s ease-in; 
+  transform: rotate(-46deg);
+  /* transition: all 0.15s ease-in;  */
 }
 .show.active {
-  transform: rotate(-46deg);
+  transform: rotate(136deg);
 }
 .user-defined {
   padding: 5px;
@@ -316,7 +320,16 @@ input[type="range"]::-webkit-slider-runnable-track {
 .manage-speed {
   z-index: 100;
 }
-@media (max-width: 992px) and (min-width: 662px) {
+
+@media (min-width:1081px) {
+  .generate-new-btn {
+    width: 150px;
+  }
+  .sort-btn, .generate-new-btn {
+    height: 40px;
+  }
+}
+@media (max-width: 1080px) and (min-width: 662px) {
   .bar {
     margin: 0 5px;
   }
@@ -333,8 +346,13 @@ input[type="range"]::-webkit-slider-runnable-track {
   .algo {
     color: #fff;
   }
+  .generate-new-btn {
+    width: 150px;
+    text-align: center;
+  }
   .sort-btn {
     width: 100px;
+    height: 50px;
     text-align: center;
   }
   .user-defined-input input {
@@ -372,4 +390,49 @@ input[type="range"]::-webkit-slider-runnable-track {
   .manage-speed {
     width: 100px;
   }
+}
+
+/* Trace code */
+
+.trace-code-container {
+  position: absolute;
+  bottom: 190px;
+  right: 0px;
+  height: 100px;
+  width: 420px;
+}
+
+.parse-comparison-container,.pseudo-code-container {
+  display: flex;
+  padding: 10px;
+}
+.parse-comparison,.pseudo-code {
+  flex: 2;
+  visibility: hidden;
+  background-color: #5E7D88;
+  margin-right: 10px;
+  padding: 20px;
+  
+}
+.parse-comparison.active,.pseudo-code.active {
+  visibility: visible;
+}
+.hide-panel {
+  background-color: rgb(94, 125, 136);
+  width: 50px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 10px;
+}
+
+
+.markCode {
+  color: #fff;
+  background-color: rgba(0,0,0,0.5);
+}
+.unmarkCode {
+  color: #000;
+  background-color: rgba(0,0,0,0.5);
 }

@@ -22,42 +22,69 @@
                     <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(3)">MERGE</a></li>
                     <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(4)">QUICK</a></li>
                     <li class = "sort-btn"><a href="javascript:void(0)" class = "algo" onclick="sort()">SORT</a></li>
-                    <li></li>
+                    <li class = "generate-new-btn"><a href="javascript:void(0)" class = "algo" onclick="createBars()">GENERATE NEW</a></li>
+                
                 </ul>
             </div>
             
         </div>
         
-        <!-- <div class = "exploration-mode-drop-down">
+        <div class = "exploration-mode-drop-down">
            <ul>
-               <li><a href="#">Exploration Mode <i class="fas fa-caret-down"></i></a>
+               <li><a href="#">ANALYSIS <i class="fas fa-caret-down"></i></a>
                     <ul class = "e-lecture-mode">
-                        <li><a href="#">E-exploration Mode</a></li>
+                        <li><a href="#">ANALYSIS</a></li>
                     </ul>
                 </li>
            </ul>
-        </div> -->
+        </div>
         <div class = "menu-icon"><i class="fa-solid fa-bars"></i></div>
     </nav>
     
     <!-- end of nav bar -->
     
-    <!--  The bars go here -->
+    <!-- The bars go here -->
     <div class = "display-area">
         
     </div>
+
+    <!-- Color Codes -->
     <div class="color-codes">
         <p class="color-code-title" style="display:none;">Color code</p>
         <div class = "Grid-container"></div>
        
     </div>
+
+    <!-- Algorithm Pseudo Code-->
+
+    <!-- <div class="algorithm-analysis"> -->
+
+        <div class="trace-code-container">
+            <div class="parse-comparison-container">
+                    <div class="parse-comparison">
+                    </div>
+                    <div class="hide-panel" id ="hide-panel1">
+                        <div class="show"></div>
+                    </div>
+            </div>
+
+            <div class="pseudo-code-container">
+                    <div class="pseudo-code">  
+                    </div>
+                    <div class="hide-panel" id ="hide-panel2">
+                        <div class="show"></div>
+                    </div>
+            </div>
+        </div>
+        
+    <!-- </div> -->
     <div class = "service-container">
         <div class="show-service">
-            <div class="show"></div>
+            <div class="show" id="show-input-arrow"></div>
         </div>
         <div class="user-defined-input">
             <label for="user-defined">Enter your input: </label>
-            <input type="text" name="user-defined" id="user-input">
+            <input type="text" name="user-defined" id="user-input" placeholder="Insert comma separated....">
             <label for="user-defined" class="user-defined">Create</label>        
         </div>
     </div>
@@ -67,6 +94,7 @@
         <input type="range" id="speed" value="0" name="rangeInput" min="0" max="100">
     </div>
     
+    <script src="tracecode.js"></script>
     <script src="app.js" ></script>
     <script src="sortingAlgorithms.js"></script>
     <script src="visualize.js"></script>

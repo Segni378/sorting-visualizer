@@ -506,6 +506,9 @@ class sortingAlgorithms {
       this.visualize.markCode("outer-loop");
       await this.visualize.delay();
       this.visualize.unmarkCode("outer-loop");
+
+      this.visualize.markCode("inner-loop1");
+    
       while (
         (await this.visualize.findGreater(lb, start)) ||
         pivot === Number(this.list[start].getAttribute("value"))
@@ -525,12 +528,16 @@ class sortingAlgorithms {
 
         if (start > this.list.length - 1) break;
       }
-
+        await this.visualize.delay();
+        this.visualize.unmarkCode("inner-loop1");
+      this.visualize.markCode("inner-loop2");
+      
       while (await this.visualize.findSmaller(end, lb)) {
         /* A code for trace code visualization */
-        this.visualize.markCode("inner-loop2");
-        await this.visualize.delay();
-        this.visualize.unmarkCode("inner-loop2");
+         this.visualize.markCode("inner-loop2");
+         await this.visualize.delay();
+         this.visualize.unmarkCode("inner-loop2");
+        
         this.visualize.markCode("increament-end");
         await this.visualize.delay();
         this.visualize.unmarkCode("increament-end");
@@ -541,7 +548,8 @@ class sortingAlgorithms {
         end--;
         if (end < 0) break;
       }
-
+      await this.visualize.delay();
+      this.visualize.unmarkCode("inner-loop2");
       /* A code for trace code visualization */
       this.visualize.markCode("compare");
       await this.visualize.delay();

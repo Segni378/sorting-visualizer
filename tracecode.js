@@ -215,8 +215,8 @@ const quickSortTraceCode = () => {
     p6.setAttribute("id", "increament-start");
     p8.setAttribute("id", "inner-loop2");
     p9.setAttribute("id", "increament-end");
-    p10.setAttribute("id", "compare");
-    p11.setAttribute("id", "swap1");
+    p11.setAttribute("id", "compare");
+    p12.setAttribute("id", "swap1");
     p14.setAttribute("id", "swap2");
     pseudoCode.appendChild(p1);
     pseudoCode.appendChild(p2);

@@ -96,7 +96,7 @@ const makeBars = (list, className="") => {
 userDefined.addEventListener("click", function () {
   
   /* Input validation */
-
+  
   let input = userInput.value.split(",");
   let string = userInput.value;
    if (string[0] === ",") {
@@ -140,21 +140,27 @@ userDefined.addEventListener("click", function () {
     return;
   }
   
+
   for (let i = 0; i < input.length; i++) {
     input[i] = Number(input[i]);
+
+    if(isNaN(input[i])) {
+      alert("Invalid Input! Entered an alphabet(s) instead of number!");
+      return;
+    }
     if(input[i] > 60 || input[i] <= 10) {
-      console.log(input[i]);
       alert("Maximum and minimum number is 60 and 10 respectively, Sorry!");
       return;
     }
   }
 
   /* Color code initial setup */
-
+  
   const colorCodes = document.querySelector(".Grid-container");
   colorCodes.innerHTML = "";
   const colorCodeTitle = document.querySelector(".color-code-title");
   colorCodeTitle.style.display = "none";
+  
   makeBars(input);
 });
 

@@ -10,6 +10,7 @@ const hidePanel2 = document.querySelector("#hide-panel2");
 const userService = document.querySelector(".user-defined-input");
 const menu = document.querySelector(".menu-icon");
 const algos = document.querySelector(".algos");
+const analysis = document.querySelector(".analysis");
 
 // Function to get the width of the window. Used in the visualize.js in swap function for the responsive functionality purpose.
 
@@ -69,15 +70,15 @@ const makeBars = (list, className="") => {
     let i = 0;
     for (let element of list) {
       const bar = document.createElement("div");
-      const number_disp = document.createElement("p");
+      const number_disp = document.createElement("span");
       number_disp.classList.add("number");
-      if ( element === 6) {
-        number_disp.style.paddingBottom = "25px";
-      }
-      if (element === 5) {
-        // number_disp.style.marginBottom = "15px";
-        number_disp.style.paddingBottom = "18px";
-      }
+      // if ( element === 6) {
+      //   number_disp.style.paddingBottom = "25px";
+      // }
+      // if (element === 5) {
+      //   // number_disp.style.marginBottom = "15px";
+      //   number_disp.style.paddingBottom = "18px";
+      // }
       bar.className = "bar";
       if(className != "")
         bar.classList.add(className);
@@ -85,8 +86,10 @@ const makeBars = (list, className="") => {
       i++;
       bar.setAttribute("value", String(element));
       bar.style.height = `${5.1* element}px`;
+      // bar.style.width = "40px";
       number_disp.innerHTML = element;
-      bar.appendChild(number_disp);
+      // bar.appendChild(number_disp);
+      bar.textContent = element;
       bars.appendChild(bar);
     }
 }

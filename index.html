@@ -29,12 +29,11 @@
             
         </div>
         
+        
         <div class = "exploration-mode-drop-down">
            <ul>
-               <li><a href="#">ANALYSIS <i class="fas fa-caret-down"></i></a>
-                    <ul class = "e-lecture-mode">
-                        <li><a href="#">ANALYSIS</a></li>
-                    </ul>
+               <li>
+                   <button >ANALYSIS</button>  
                 </li>
            </ul>
         </div>
@@ -43,6 +42,13 @@
     
     <!-- end of nav bar -->
     
+    <!-- Analysis popup -->
+    <div class="overlay"></div>
+    <div class="analysis">
+        <div class="analysis-title"></div>
+        <div class="algorithm-code"></div>
+        <div class="analysis-explanation"></div>
+    </div>
     <!-- The bars go here -->
     <div class = "display-area">
         
@@ -98,5 +104,6 @@
     <script src="app.js" ></script>
     <script src="sortingAlgorithms.js"></script>
     <script src="visualize.js"></script>
+    <script src="analysis.js"></script>
 </body>
 </html>

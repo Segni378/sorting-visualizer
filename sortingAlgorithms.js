@@ -4,6 +4,7 @@ class sortingAlgorithms {
     this.list = list;
     this.size = this.list.length;
     this.visualize = new visualizeSorting(this.list, time);
+    this.isSorted = false;
   }
 
   // Extract the number of the modified array from
@@ -94,7 +95,9 @@ class sortingAlgorithms {
     // And the other thing is, previously nothing was happening, actually, in the DOM except the visualization. The elements are still where now conceptually. Only the array elements were being swapped. By calling the below function we will override the previous position of the elements
 
     makeBars(this.getValues(this.list), "done");
-    return this.list;
+    this.isSorted = true;
+    showAnalysis(this.list.length);
+    return this.isSorted;
   };
 
   // Selection Sort

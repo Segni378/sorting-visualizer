@@ -1,7 +1,6 @@
 class visualizeSorting {
   constructor(list, time) {
     this.list = list;
-    // this.time = 500 / time;
   }
 
   marksorted = async (sortedIndex) => {
@@ -142,12 +141,13 @@ class visualizeSorting {
     let width = getWidth(); // A function from app.js to get current windows width.
     if (width <= 661) {
       margin = 4;
-    } else if (width >= 662 && width <= 992) {
+    } else if (width >= 662 && width <= 1080) {
       margin = 10;
     } else {
       margin = 20;
     }
-
+    console.log(width1,width2);
+    console.log(margin);
     this.list[index1].style.transform = `translateX(${
       width1 * (index2 - dataSet1) + (index2 - dataSet1) * Number(margin)
     }px)`;

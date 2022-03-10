@@ -3,6 +3,7 @@
 :root {
   --transition: all 0.3s ease-out;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -11,9 +12,12 @@
 }
 body {
   background-color: lightgrey;
+  /* width: 100vw; */
   min-height: 100vh;
   /* overflow: hidden; */
+  overflow-x: hidden;
   position: relative;
+  
 }
 
 nav {
@@ -113,6 +117,21 @@ a {
   padding: 10px;
   border-radius: 5px;
 }
+.generate-new-btn {
+  text-align: center;
+}
+.generate-new-btn button {
+  background-color: transparent;
+  border:none;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+
+}
+.generate-new-btn button:disabled .generate-new-btn,.generate-new-btn button:disabled{
+  background-color:transparent;
+  cursor: default;
+} 
 .algos .sort-btn:hover a, .algos .generate-new-btn:hover a{
   border: none;
 }
@@ -126,9 +145,9 @@ a {
 .e-lecture-mode li:hover {
   border: 1px solid rgb(73, 114, 160);
 }
-.exploration-mode-drop-down ul button:hover {
+/* .exploration-mode-drop-down ul button:hover {
   cursor: pointer;
-}
+} */
 .exploration-mode-drop-down ul li:hover .e-lecture-mode li {
   display: block;
   align-items: flex-start;
@@ -165,14 +184,8 @@ a {
   padding: 15px;
   /* position: absolute; */
 }
-.bar span {
-  
-  /* position: absolute; */
-}
-/* Funny ! :) No idea came to my mind to put the numbers at the top of the bars when the numbers are smaller. push-up class is only for the numbers 5, 6 and 7 */
-/* .bar .push-up {
-  padding-bottom: 18px;
-} */
+
+
 .colorContainer {
   display: flex;
   margin-bottom: 5px;
@@ -316,8 +329,8 @@ input[type="range"]::-webkit-slider-runnable-track {
 .algos.active {
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 53px;
+  position: absolute;
+  top: 30px;
   left: 0;
   width: 90%;
   height: 400px;
@@ -375,11 +388,66 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 /* Analysis Code */
+
+.analysis.hidden {
+  display: none;
+}
+.analysis-btn {
+  background-color: #608FA0;
+  border:none;
+  border-radius: 5px;
+}
+.analysis-btn:hover {
+  cursor: pointer;
+}
+.analysis-btn:disabled .analysis-btn:hover, .analysis-btn:disabled{
+  background-color: rgba(0,0,0,0.5);
+  cursor: default;
+}
 .analysis {
   position: absolute;
-  margin: 100px auto;
-
+  width: 600px;
+  height: 400px;
+  margin: 50px auto;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  z-index: 10001;
 }
+.analysis-explanation ul, .algorithm-code{
+  margin-left: 40px;
+  margin-top: 15px;
+  margin-bottom:10px;
+}
+.analysis-explanation ul li{
+  margin-bottom: 10px;
+}
+.analysis-title h2, .analysis-explanation h2 {
+  font-size: 18px;
+}
+.overlay {
+  position: absolute;
+  left:0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(3px);
+  z-index: 10000;
+  transform: translateY(-20px);
+}
+.overlay.hidden {
+  display: none;
+}
+.analysis span {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
 @media (min-width:1081px) {
   .generate-new-btn {
     width: 150px;

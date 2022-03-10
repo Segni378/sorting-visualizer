@@ -10,8 +10,12 @@ const hidePanel2 = document.querySelector("#hide-panel2");
 const userService = document.querySelector(".user-defined-input");
 const menu = document.querySelector(".menu-icon");
 const algos = document.querySelector(".algos");
-const analysis = document.querySelector(".analysis");
+const closeAnalysis = document.querySelector(".close-analysis");
+const analysisBtn = document.querySelector(".analysis-btn");
+const generateNew = document.querySelector(".generate-new");
+const userDefinedInput = document.getElementById("user-input");
 
+analysisBtn.disabled = true;
 // Function to get the width of the window. Used in the visualize.js in swap function for the responsive functionality purpose.
 
 function getWidth() {
@@ -70,8 +74,8 @@ const makeBars = (list, className="") => {
     let i = 0;
     for (let element of list) {
       const bar = document.createElement("div");
-      const number_disp = document.createElement("span");
-      number_disp.classList.add("number");
+      // const number_disp = document.createElement("span");
+      // number_disp.classList.add("number");
       // if ( element === 6) {
       //   number_disp.style.paddingBottom = "25px";
       // }
@@ -87,7 +91,7 @@ const makeBars = (list, className="") => {
       bar.setAttribute("value", String(element));
       bar.style.height = `${5.1* element}px`;
       // bar.style.width = "40px";
-      number_disp.innerHTML = element;
+      // number_disp.innerHTML = element;
       // bar.appendChild(number_disp);
       bar.textContent = element;
       bars.appendChild(bar);
@@ -214,7 +218,9 @@ const sort = () => {
       return;
     }
 
-   
+    generateNew.disabled = true;
+    userDefinedInput.disabled = true; 
+    
     parseComparison.classList.add("active");
     pseudoCode.classList.add("active");
     
@@ -249,7 +255,7 @@ const sort = () => {
 const randumNumbers = () => {
   let list = new Array();
   let max = 60,
-  min = 10;
+  min = 1;
 
   for (let i = 0; i < 10; i++) {
     let randumNumber = Math.floor(Math.random() * (max - min) + min);
@@ -260,7 +266,7 @@ const randumNumbers = () => {
 };
 
 const createBars = () => {
-  
+  analysisBtn.disabled = true;
   let list = randumNumbers();
   makeBars(list); 
   // This code is found in the tracecode.js file

@@ -3,7 +3,17 @@
 const analysisTitle = document.querySelector(".analysis-title");
 const algoCode = document.querySelector(".algorithm-code");
 const analysisExp = document.querySelector(".analysis-explanation");
+const analysis = document.querySelector(".analysis");
+const overlay = document.querySelector(".overlay");
 
+const showAnalysiss = () => {
+    analysis.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+}
+closeAnalysis.addEventListener("click", function() {
+    analysis.classList.add("hidden");
+    overlay.classList.add("hidden");
+})
 const bubbleSortAnalysis = (length) => {
 
     analysisTitle.innerHTML = "<h2>The Time Complexity of the Bubble Sort Algorithm</h2>";
@@ -15,7 +25,7 @@ const bubbleSortAnalysis = (length) => {
     const p5C = document.createElement("p");
 
     p1C.innerHTML = `for (i = 0; i < ${length} - 1; i++) { <br>`;
-    p2C.innerHTML = `for (j = 0; j < ${length} - i - 1; j++) { <br>`;
+    p2C.innerHTML = `&nbsp;&nbsp;for (j = 0; j < ${length} - i - 1; j++) { <br>`;
     p3C.innerHTML = "&nbsp;&nbsp; if leftElement > rightElement <br>";
     p4C.innerHTML =
       "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swap(leftElement, rightElement) <br>";
@@ -48,7 +58,7 @@ const bubbleSortAnalysis = (length) => {
     ul.appendChild(li3);
     li4.innerHTML = `Your inner loop runs also ${length} times. So totally it runs for ${length * length} times. `;
     ul.appendChild(li4);
-    li5.innerHTML = `Which result is O(n^2) time complexity`;
+    li5.innerHTML = `Which results in O(n^2) time complexity`;
      ul.appendChild(li5);
     analysisExp.appendChild(ul);
     

@@ -22,7 +22,7 @@
                     <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(3)">MERGE</a></li>
                     <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(4)">QUICK</a></li>
                     <li class = "sort-btn"><a href="javascript:void(0)" class = "algo" onclick="sort()">SORT</a></li>
-                    <li class = "generate-new-btn"><a href="javascript:void(0)" class = "algo" onclick="createBars()">GENERATE NEW</a></li>
+                    <li class = "generate-new-btn"><button class = "algo generate-new" onclick="createBars()">GENERATE NEW</button></li>
                 
                 </ul>
             </div>
@@ -33,7 +33,7 @@
         <div class = "exploration-mode-drop-down">
            <ul>
                <li>
-                   <button >ANALYSIS</button>  
+                   <button class="analysis-btn" onclick="showAnalysiss();">ANALYSIS</button>  
                 </li>
            </ul>
         </div>
@@ -43,8 +43,9 @@
     <!-- end of nav bar -->
     
     <!-- Analysis popup -->
-    <div class="overlay"></div>
-    <div class="analysis">
+    <div class="overlay hidden"></div>
+    <div class="analysis hidden">
+        <span class="close-analysis">X</span>
         <div class="analysis-title"></div>
         <div class="algorithm-code"></div>
         <div class="analysis-explanation"></div>

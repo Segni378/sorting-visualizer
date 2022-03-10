@@ -7,6 +7,11 @@ class sortingAlgorithms {
     this.isSorted = false;
   }
 
+  enableButtons = () => {
+    analysisBtn.disabled = false;
+    generateNew.disabled = false;
+    userDefinedInput.disabled = false;
+  }
   // Extract the number of the modified array from
   getValues = (list) => {
     let values = [];
@@ -96,6 +101,7 @@ class sortingAlgorithms {
 
     makeBars(this.getValues(this.list), "done");
     this.isSorted = true;
+    this.enableButtons(); // Enables Buttons
     showAnalysis(this.list.length);
     return this.isSorted;
   };
@@ -208,6 +214,7 @@ class sortingAlgorithms {
       }
     }
     // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
+    this.enableButtons();
     makeBars(this.getValues(this.list), "done");
   };
 
@@ -290,6 +297,7 @@ class sortingAlgorithms {
     }
 
     // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
+    this.enableButtons();
     makeBars(this.getValues(this.list), "done");
   };
 
@@ -314,6 +322,7 @@ class sortingAlgorithms {
       this.list[counter].classList.add("done");
     }
 
+    this.enableButtons();
     // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
   };
@@ -458,6 +467,7 @@ class sortingAlgorithms {
    
     await this.quickSort(lb, ub);
 
+    this.enableButtons();
     // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
   }

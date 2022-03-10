@@ -333,7 +333,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   top: 30px;
   left: 0;
   width: 90%;
-  height: 400px;
+  height: 420px;
   background-color: rgba(0,0,0,0.5);
   padding-left: 10px;
   backdrop-filter: blur(0.3rem);

@@ -23,7 +23,7 @@ const ParseComparison = () => {
     span2.textContent = comparisonCount;
     span1.style.marginLeft = "5px";
     span2.style.marginLeft = "5px";
-    p1.textContent = "No. of parses : ";
+    p1.textContent = "No. of passes : ";
     p2.textContent = "No. of comparisons : ";
 
     container1.appendChild(p1);
@@ -124,7 +124,7 @@ const insertionSortTraceCode = (length) => {
      const p4 = document.createElement("p");
      const p5 = document.createElement("p");
     
-    p1.innerHTML = `for (i = 0; i < ${length}; i++) { <br>`;
+    p1.innerHTML = `for (i = 1; i < ${length}; i++) { <br>`;
     p2.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp; j = i - 1;<br>";
     p3.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;while (j > 0 && arr[j] >= arr[j+1]) { <br>`;
     p4.innerHTML =

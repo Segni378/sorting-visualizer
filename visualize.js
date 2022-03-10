@@ -146,8 +146,7 @@ class visualizeSorting {
     } else {
       margin = 20;
     }
-    console.log(width1,width2);
-    console.log(margin);
+   
     this.list[index1].style.transform = `translateX(${
       width1 * (index2 - dataSet1) + (index2 - dataSet1) * Number(margin)
     }px)`;

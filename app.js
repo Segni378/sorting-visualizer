@@ -15,6 +15,7 @@ const analysisBtn = document.querySelector(".analysis-btn");
 const generateNew = document.querySelector(".generate-new");
 const userDefinedInput = document.getElementById("user-input");
 
+let sorted = false;
 analysisBtn.disabled = true;
 // Function to get the width of the window. Used in the visualize.js in swap function for the responsive functionality purpose.
 
@@ -68,7 +69,17 @@ const changeSpeed = (value) => {
 }
 
 const makeBars = (list, className="") => {
+    sorted = false;
+
+    // When you come back check know that the analysis button is not working right. When it recreats the bars it disables it. 
+   console.log(className);
+   if(className == ""){
+     console.log("Disabled!");
+     analysisBtn.disabled = true;
+   }
+
     
+
     const bars = document.querySelector(".display-area");
     bars.innerHTML = "";
     let i = 0;
@@ -155,7 +166,7 @@ userDefined.addEventListener("click", function () {
       alert("Invalid Input! Entered an alphabet(s) instead of number!");
       return;
     }
-    if(input[i] > 60 || input[i] <= 10) {
+    if(input[i] > 60 || input[i] < 10) {
       alert("Maximum and minimum number is 60 and 10 respectively, Sorry!");
       return;
     }
@@ -199,7 +210,9 @@ const isSorted = (list) => {
    return false;
 }
 
-const sort = () => {
+const sort = async() => {
+
+    
     const colorCodeTitle = document.querySelector(".color-code-title");
     colorCodeTitle.style.display = "block";
 
@@ -212,8 +225,8 @@ const sort = () => {
     }
 
     const list = document.querySelectorAll(".bar");
-  
-    if(isSorted(list)) {
+    
+    if (sorted === true && isSorted(list)) {
       alert("Already sorted!");
       return;
     }
@@ -229,27 +242,28 @@ const sort = () => {
     if(algoSelected === 0) {
       ParseComparison();
       bubbleSortTraceCode(list.length);
-      algorithm.bubbleSort();
+      sorted = await algorithm.bubbleSort();
+      console.log(sorted);
     } 
     if(algoSelected === 1){
       ParseComparison();
       selectionSortTraceCode(list.length);
-      algorithm.selectionSort();
+      sorted = algorithm.selectionSort();
     } 
     if(algoSelected === 2) {
       ParseComparison();
       insertionSortTraceCode(list.length);
-      algorithm.insertionSort();
+      sorted = algorithm.insertionSort();
     }
     if(algoSelected === 3) {
       ParseComparison();
       mergeSortTraceCode();
-      algorithm.mergeSort();
+      sorted = algorithm.mergeSort();
     } 
     if(algoSelected === 4) {
       ParseComparison();
       quickSortTraceCode();
-      algorithm.quickSortAlgo();
+      sorted = algorithm.quickSortAlgo();
     } 
 }
 const randumNumbers = () => {
@@ -266,6 +280,7 @@ const randumNumbers = () => {
 };
 
 const createBars = () => {
+  sorted = false;
   analysisBtn.disabled = true;
   let list = randumNumbers();
   makeBars(list); 

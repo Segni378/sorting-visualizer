@@ -407,7 +407,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 .analysis {
   position: absolute;
   width: 600px;
-  height: 400px;
+  /* height: 500px; */
   margin: 50px auto;
   left: 0;
   right: 0;
@@ -428,7 +428,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   font-size: 18px;
 }
 .overlay {
-  position: absolute;
+  position: fixed;
   left:0;
   top: 0;
   height: 100%;
@@ -436,7 +436,6 @@ input[type="range"]::-webkit-slider-runnable-track {
   background-color: rgba(0,0,0,0.5);
   backdrop-filter: blur(3px);
   z-index: 10000;
-  transform: translateY(-20px);
 }
 .overlay.hidden {
   display: none;

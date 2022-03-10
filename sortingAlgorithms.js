@@ -2,6 +2,7 @@
 class sortingAlgorithms {
   constructor(list, time) {
     this.list = list;
+    this.copylist = list;
     this.size = this.list.length;
     this.visualize = new visualizeSorting(this.list, time);
     this.isSorted = false;
@@ -102,7 +103,7 @@ class sortingAlgorithms {
     makeBars(this.getValues(this.list), "done");
     this.isSorted = true;
     this.enableButtons(); // Enables Buttons
-    showAnalysis(this.list.length);
+    showAnalysis(this.list.length, this.copylist);
     return this.isSorted;
   };
 
@@ -161,7 +162,9 @@ class sortingAlgorithms {
       this.visualize.unmarkCode("initialize-min");
       // await this.visualize.delay();
       // // await this.visualize.delay();
-      
+      this.visualize.markCode("inner-for-loop");
+      await this.visualize.delay();
+      this.visualize.unmarkCode("inner-for-loop");
       for (let j = i + 1; j < this.list.length; j++) {
         this.visualize.markCode("inner-for-loop");
         await this.visualize.mark(j);
@@ -216,6 +219,9 @@ class sortingAlgorithms {
     // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     this.enableButtons();
     makeBars(this.getValues(this.list), "done");
+    this.isSorted = true;
+    showAnalysis(this.list.length, this.copylist);
+    return this.isSorted;
   };
 
   // Insertion Sort
@@ -254,7 +260,9 @@ class sortingAlgorithms {
       let j = i - 1;
 
       await this.visualize.markUnsorted(i);
-
+      this.visualize.markCode("inner-loop");
+      await this.visualize.delay();
+      this.visualize.unmarkCode("inner-loop");
       while (j >= 0 && (await this.visualize.compare(j, j + 1))) {
         
         /* A code for visualizing unsorted partition */
@@ -298,7 +306,10 @@ class sortingAlgorithms {
 
     // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     this.enableButtons();
+    showAnalysis(this.list.length, this.copylist);
     makeBars(this.getValues(this.list), "done");
+    this.isSorted = true;
+    return this.isSorted;
   };
 
   // Merge Sort
@@ -325,6 +336,8 @@ class sortingAlgorithms {
     this.enableButtons();
     // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
+    this.isSorted = true;
+    return this.isSorted;
   };
 
   MergeDivider = async (start, end) => {
@@ -470,6 +483,8 @@ class sortingAlgorithms {
     this.enableButtons();
     // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
+    this.isSorted = true;
+    return this.isSorted;
   }
 
   quickSort = async(lb, ub) => {

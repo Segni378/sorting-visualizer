@@ -248,7 +248,6 @@ const selectionSortAnalysis = (length) => {
     const li2 = document.createElement("li");
     const li3 = document.createElement("li");
     const li4 = document.createElement("li");
-    const li5 = document.createElement("li");
     const h2 = document.createElement("h2");
     
     h2.textContent = "Worst Case, Average Case and Best Case";
@@ -265,6 +264,160 @@ const selectionSortAnalysis = (length) => {
     analysisExp.appendChild(ul);
 
 }
+
+const mergeSortAnalysis = (length) => {
+  
+  analysisTitle.innerHTML = "<h2>The Time Complexity of the merge sort Algorithm</h2>";
+
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+  const p4 = document.createElement("p");
+  const p5 = document.createElement("p");
+
+  p1.innerHTML = "Split each element into partitions of size 1 <br>";
+  p2.innerHTML = "&nbsp;&nbsp;Recursively merge adjacent partitions <br><br>";
+  p3.innerHTML =
+    "&nbsp;&nbsp;Sort adjacent partitions using another array <br><br>";
+  p4.innerHTML =
+    "&nbsp;&nbsp;Place the sorted numbers back in the &nbsp;&nbsp; original array";
+
+  algoCode.appendChild(p1);
+  algoCode.appendChild(p2);
+  algoCode.appendChild(p3);
+  algoCode.appendChild(p4);
+
+  const ul = document.createElement("ul");
+  const li1 = document.createElement("li");
+  const li2 = document.createElement("li");
+  const li3 = document.createElement("li");
+  const li4 = document.createElement("li");
+  const li5 = document.createElement("li");
+  const h2 = document.createElement("h2");
+
+  h2.textContent = "Worst Case, Average Case and Best Case";
+  analysisExp.appendChild(h2);
+  li1.innerHTML ="Merge sort divides the array equally using recurssion. For <em>n</em> elements the number of levels(stages) created are <em>logn</em>.";
+  ul.appendChild(li1);
+  li3.innerHTML = `The merge process does not contain any nested loops, so it is executed with linear complexity: If the array size is doubled, the merge time doubles, too. The total effort is, therefore, the same at all merge levels.`;
+  ul.appendChild(li3);
+  li4.innerHTML = `So we have n elements times <em>log2 n</em> division and merge stages. Therefore: The time complexity of Merge Sort is: <em>O(n log n)</em>`;
+  ul.appendChild(li4);
+
+  analysisExp.appendChild(ul);
+
+}
+
+const quickSortCommon = () => {
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+  const p4 = document.createElement("p");
+  const p5 = document.createElement("p");
+  const p6 = document.createElement("p");
+  const p7 = document.createElement("p");
+  const p8 = document.createElement("p");
+  const p9 = document.createElement("p");
+  const p10 = document.createElement("p");
+  const p11 = document.createElement("p");
+  const p12 = document.createElement("p");
+  const p13 = document.createElement("p");
+  const p14 = document.createElement("p");
+
+  p1.innerHTML = "for each (unsorted) partition <br><br>";
+  p2.innerHTML = "&nbsp;&nbsp;&nbsp;set first element as pivot <br>";
+  p3.innerHTML =
+    "&nbsp;&nbsp;&nbsp;i = pivotIndex <br> &nbsp;&nbsp;&nbsp;j = upperBound<br><br>";
+  p4.innerHTML = "&nbsp;while(i <= j) { <br>";
+  p5.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp; while(pivot >= arr[i] { <br>";
+  p6.innerHTML =
+    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start++;<br>";
+  p7.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;}";
+  p8.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp; while(arr[j] < pivot) { <br>";
+  p9.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end--; <br>";
+  p10.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;}";
+  p11.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp; if(arr[i] < arr[j])";
+  p12.innerHTML =
+    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap(arr[i], arr[j]); <br>";
+  p13.innerHTML = "&nbsp; }";
+  p14.innerHTML = "&nbsp;&nbsp;swap(pivot, arr[j])";
+
+  algoCode.appendChild(p1);
+  algoCode.appendChild(p2);
+  algoCode.appendChild(p3);
+  algoCode.appendChild(p4);
+  algoCode.appendChild(p5);
+  algoCode.appendChild(p6);
+  algoCode.appendChild(p7);
+  algoCode.appendChild(p8);
+  algoCode.appendChild(p9);
+  algoCode.appendChild(p10);
+  algoCode.appendChild(p11);
+  algoCode.appendChild(p12);
+  algoCode.appendChild(p13);
+  algoCode.appendChild(p14);
+
+}
+const worstCaseQuickSortAnalysis = () => {
+
+  analysisTitle.innerHTML = "<h2>The Time Complexity of the quick sort Algorithm</h2>";
+
+  quickSortCommon();
+
+  const ul = document.createElement("ul");
+  const li1 = document.createElement("li");
+  const li2 = document.createElement("li");
+  const li3 = document.createElement("li");
+  const li4 = document.createElement("li");
+  const li5 = document.createElement("li");
+  const li6 = document.createElement("li");
+  const h2 = document.createElement("h2");
+
+  h2.textContent = "Worst Case";
+  analysisExp.appendChild(h2);
+  li1.innerHTML = "If the pivot element is always the smallest or largest element of the (sub)array (e.g. because our input data is already sorted and we always choose the last one as the pivot element), the array would not be divided into two approximately equally sized partitions,";
+  ul.appendChild(li1);
+  li3.innerHTML = `but one of length 0 (since no element is larger than the pivot element) and one of length n-1 (all elements except the pivot element).`;
+  ul.appendChild(li3);
+  li4.innerHTML = `Therefore we would need n partitioning levels with a partitioning effort of size n, n-1, n-2, etc.:`;
+  ul.appendChild(li4);
+  li5.innerHTML = "When we total up the partitioning times for each level, we get <em>n + (n-1) + (n-2) + ... + 2 + 1 = n(n+1)/2</em> comparisons.";
+  ul.appendChild(li5);
+  li6.innerHTML =
+    " Your input has time complexity, in big-Θ notation, <em>Θ(n2)</em>";
+  ul.appendChild(li6);
+  analysisExp.appendChild(ul);
+}
+
+const averageCaseQuickSortAnalysis = () => {
+  analysisTitle.innerHTML = "<h2>The Time Complexity of the quick sort Algorithm</h2>";
+
+  quickSortCommon();
+
+  const ul = document.createElement("ul");
+  const li1 = document.createElement("li");
+  const li2 = document.createElement("li");
+  const li3 = document.createElement("li");
+  const li4 = document.createElement("li");
+  const li5 = document.createElement("li");
+  const li6 = document.createElement("li");
+  const h2 = document.createElement("h2");
+
+  h2.textContent = "Worst Case";
+  analysisExp.appendChild(h2);
+  li1.innerHTML = "Your input results in average case time complexity.";
+  ul.appendChild(li1);
+  li3.innerHTML = `Showing that the average-case running time is also <em>Θ(nlog⁡2n)</em> takes some pretty involved mathematics, `;
+  ul.appendChild(li3);
+  li4.innerHTML = `Therefore we would need n partitioning levels with a partitioning effort of size n, n-1, n-2, etc.:`;
+  ul.appendChild(li4);
+  li5.innerHTML = "When we total up the partitioning times for each level, we get <em>n + (n-1) + (n-2) + ... + 2 + 1 = n(n+1)/2</em> comparisons.";
+  ul.appendChild(li5);
+  li6.innerHTML = "Your input has time complexity, in big-Θ notation, <em>Θ(n2)</em>";
+  ul.appendChild(li6);
+  analysisExp.appendChild(ul);
+
+}
 const showAnalysis = (length, list) => {
     analysisExp.innerHTML = "";
     analysisTitle.innerHTML = "";
@@ -274,7 +427,6 @@ const showAnalysis = (length, list) => {
   }
 
   if (algoSelected === 1) {
-    console.log("hello");
     selectionSortAnalysis(length);
   }
 
@@ -290,6 +442,18 @@ const showAnalysis = (length, list) => {
         averageCaseInsertionSortAnalysis(length);
     }
 
+  }
+  if(algoSelected === 3) {
+    mergeSortAnalysis(length);
+  }
+  if(algoSelected === 4) {
+    if(checkBestCase(list)) {
+      worstCaseQuickSortAnalysis();
+    }
+    else {
+      averageCaseQuickSortAnalysis();
+    }
+    
   }
 
   

@@ -72,9 +72,8 @@ const makeBars = (list, className="") => {
     sorted = false;
 
     // When you come back check know that the analysis button is not working right. When it recreats the bars it disables it. 
-   console.log(className);
+   
    if(className == ""){
-     console.log("Disabled!");
      analysisBtn.disabled = true;
    }
 
@@ -269,7 +268,7 @@ const sort = async() => {
 const randumNumbers = () => {
   let list = new Array();
   let max = 60,
-  min = 1;
+  min = 10;
 
   for (let i = 0; i < 10; i++) {
     let randumNumber = Math.floor(Math.random() * (max - min) + min);

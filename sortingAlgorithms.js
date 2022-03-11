@@ -337,6 +337,7 @@ class sortingAlgorithms {
     // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
     this.isSorted = true;
+    showAnalysis(this.list.length, this.copylist);
     return this.isSorted;
   };
 
@@ -484,6 +485,7 @@ class sortingAlgorithms {
     // create the bars in the dom again with the updated list. This will prevent the user trying to sort the already sorted input multiple times.
     makeBars(this.getValues(this.list), "done");
     this.isSorted = true;
+    showAnalysis(this.list.length, this.copylist);
     return this.isSorted;
   }
 

@@ -101,17 +101,34 @@ a {
   color: rgb(68, 110, 158);
 }
 
-.exploration-mode-drop-down {
+.analysis-btn-container {
   margin-right: 50px;
   margin-bottom: 10px;
+  
 }
-
-.exploration-mode-drop-down ul li button {
+.analysis-btn-container ul{
+  display: flex;
+  align-items:flex-end;
+  justify-content: center;
+  
+}
+.analysis-btn-container ul li button {
   text-decoration: none;
-  padding: 10px;
   color: black;
 }
-
+.analysis-btn-container ul li:last-child {
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}
+.analysis-btn-container ul li a {
+  /* text-decoration: underline; */
+  color: #000;
+  padding: 10px;
+  font-size: 18px;
+}
+.analysis-btn-container ul li a:hover {
+  color: darkblue;
+}
 .sort-btn, .generate-new-btn {
   background-color: #608FA0;
   padding: 10px;
@@ -119,6 +136,7 @@ a {
 }
 .generate-new-btn {
   text-align: center;
+  position: relative;
 }
 .generate-new-btn button {
   background-color: transparent;
@@ -126,6 +144,7 @@ a {
   font-size: 15px;
   text-align: center;
   cursor: pointer;
+  width: 100%;
 
 }
 .generate-new-btn button:disabled .generate-new-btn,.generate-new-btn button:disabled{
@@ -135,26 +154,10 @@ a {
 .algos .sort-btn:hover a, .algos .generate-new-btn:hover a{
   border: none;
 }
-.e-lecture-mode li {
-  background-color: lightgray;
+
+.about{
   display: none;
-  border: 1px solid rgb(92, 91, 91);
-  border-radius: 5px;
 }
-
-.e-lecture-mode li:hover {
-  border: 1px solid rgb(73, 114, 160);
-}
-/* .exploration-mode-drop-down ul button:hover {
-  cursor: pointer;
-} */
-.exploration-mode-drop-down ul li:hover .e-lecture-mode li {
-  display: block;
-  align-items: flex-start;
-  position: absolute;
-  margin-top: 0px;
-}
-
 /* Styling the bars */
 
 .display-area {
@@ -396,6 +399,8 @@ input[type="range"]::-webkit-slider-runnable-track {
   background-color: #608FA0;
   border:none;
   border-radius: 5px;
+  padding: 11px 13px 13px 13px;
+  margin-top: 10px;
 }
 .analysis-btn:hover {
   cursor: pointer;
@@ -461,6 +466,9 @@ input[type="range"]::-webkit-slider-runnable-track {
     top: 350px;
     right: 0;
   }
+  .about{
+    display: block;
+  }
 }
 @media (max-width: 1080px) and (min-width: 662px) {
   .bar {
@@ -469,7 +477,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   .algos {
     display: none;
   }
-  .exploration-mode-drop-down {
+  .analysis-btn-container {
     display: none;
   }
   .menu-icon {
@@ -501,12 +509,16 @@ input[type="range"]::-webkit-slider-runnable-track {
     background-color: rgba(94, 125, 136,0.5);
     color: #000;
   }
+  .about{
+    display: block;
+  }
 }
 @media (max-width: 661px) {
+
   .algos {
     display: none;
   }
-  .exploration-mode-drop-down {
+  .analysis-btn-container {
     display: none;
   }
   .menu-icon {
@@ -518,6 +530,9 @@ input[type="range"]::-webkit-slider-runnable-track {
   .sort-btn {
     width: 100px;
     text-align: center;
+  }
+  .about{
+    display: block;
   }
   .user-defined-input input {
     margin: 8px 0;

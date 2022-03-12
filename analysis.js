@@ -113,7 +113,7 @@ const commonInsertion = (length) => {
     const p4 = document.createElement("p");
     const p5 = document.createElement("p");
 
-    p1.innerHTML = `<em>for (i = 0; i < ${length}; i++) { <br></em>`;
+    p1.innerHTML = `<em>for (i = 1; i < ${length}; i++) { <br></em>`;
     p2.innerHTML = "<em>&nbsp;&nbsp;&nbsp;&nbsp; j = i - 1;<br></em>";
     p3.innerHTML = `<em>&nbsp;&nbsp;&nbsp;&nbsp;while (j > 0 && arr[j] >= arr[j+1]) { <br></em>`;
     p4.innerHTML =
@@ -192,7 +192,7 @@ const averageCaseInsertionSortAnalysis = (length) => {
     h2.textContent = "Average Case";
     analysisExp.appendChild(h2);
     li1.innerHTML =
-      "The outer for loop always executes n - 1 times, the number of comparisons depends on how far away the item arr[i] is from its proper position in the currently sorted subarray arr[0...i].";
+      "The outer for loop always executes n times, the number of comparisons depends on how far away the item arr[i] is from its proper position in the currently sorted subarray arr[0...i].";
     ul.appendChild(li1);
     li2.innerHTML =
       "This means that, in iteration <em>i</em> of the outer for loop, there are either 1,2, ..., or <em>i</em> comparisons.";
@@ -254,7 +254,7 @@ const selectionSortAnalysis = (length) => {
     analysisExp.appendChild(h2);
     li1.innerHTML = "The analysis of the performance of the function selection sort is simplified by the presence of two for loops with lower and upper bounds. ";
     ul.appendChild(li1);
-    li2.innerHTML = "The outer loop executes n - 1 times, and for each <em>i</em> between 0 and n - 2, the inner loop iterates <em>n - i - 1</em> times.";
+    li2.innerHTML = "The outer loop executes n times, and for each <em>i</em> between 0 and n - 2, the inner loop iterates <em>n - i - 1</em> times.";
     ul.appendChild(li2);
     li3.innerHTML = `This number stays the same for all cases.`;
     ul.appendChild(li3);
@@ -397,24 +397,15 @@ const averageCaseQuickSortAnalysis = () => {
   const ul = document.createElement("ul");
   const li1 = document.createElement("li");
   const li2 = document.createElement("li");
-  const li3 = document.createElement("li");
-  const li4 = document.createElement("li");
-  const li5 = document.createElement("li");
-  const li6 = document.createElement("li");
+  
   const h2 = document.createElement("h2");
 
-  h2.textContent = "Worst Case";
+  h2.textContent = "Average Case";
   analysisExp.appendChild(h2);
   li1.innerHTML = "Your input results in average case time complexity.";
   ul.appendChild(li1);
-  li3.innerHTML = `Showing that the average-case running time is also <em>Θ(nlog⁡2n)</em> takes some pretty involved mathematics, `;
-  ul.appendChild(li3);
-  li4.innerHTML = `Therefore we would need n partitioning levels with a partitioning effort of size n, n-1, n-2, etc.:`;
-  ul.appendChild(li4);
-  li5.innerHTML = "When we total up the partitioning times for each level, we get <em>n + (n-1) + (n-2) + ... + 2 + 1 = n(n+1)/2</em> comparisons.";
-  ul.appendChild(li5);
-  li6.innerHTML = "Your input has time complexity, in big-Θ notation, <em>Θ(n2)</em>";
-  ul.appendChild(li6);
+  li2.innerHTML = `Showing that the average-case running time is also <em>Θ(nlog⁡2n)</em> takes some pretty involved mathematics, `;
+  ul.appendChild(li2);
   analysisExp.appendChild(ul);
 
 }

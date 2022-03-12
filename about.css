@@ -53,16 +53,16 @@ body {
 }
 .content .goto-home {
     text-align: center;
-}
-.goto-home {
+    /* width: 300px; */
     margin-top: 30px;
 }
+
 .goto-home a {
     background-color: #3d3d3d;
     padding: 12px 40px;
     text-decoration: none;
     color: #fff;
-    font-size: 25px;
+    font-size: 18px;
     letter-spacing:1.5px;
 }
 .goto-home a:hover {

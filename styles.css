@@ -47,6 +47,9 @@ a {
   cursor: pointer;
   padding-bottom: 10px;
 }
+.algos li .about {
+  width: 10%;
+}
 .bar {
   transition: all 0.4s ease-out;
 }
@@ -338,7 +341,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   top: 30px;
   left: 0;
   width: 90%;
-  height: 430px;
+  height: 460px;
   background-color: rgba(0,0,0,0.5);
   padding-left: 10px;
   backdrop-filter: blur(0.3rem);

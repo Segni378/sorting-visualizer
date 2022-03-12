@@ -83,7 +83,9 @@ body {
 .social-media i:hover {
     color: #608FA0;
 }
-
+.social-media span {
+    margin-bottom: 10px;
+}
 @media screen and (max-width: 768px) {
     .content-section {
         float: none;

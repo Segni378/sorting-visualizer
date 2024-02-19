@@ -402,10 +402,8 @@ const averageCaseQuickSortAnalysis = () => {
 
   h2.textContent = "Average Case";
   analysisExp.appendChild(h2);
-  li1.innerHTML = "Your input results in average case time complexity.";
+  li1.innerHTML = "Your input results in average case time complexity, <em>Θ(nlog⁡2n)</em>";
   ul.appendChild(li1);
-  li2.innerHTML = `Showing that the average-case running time is also <em>Θ(nlog⁡2n)</em> takes some pretty involved mathematics, `;
-  ul.appendChild(li2);
   analysisExp.appendChild(ul);
 
 }

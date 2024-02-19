@@ -11,6 +11,7 @@ class sortingAlgorithms {
   enableButtons = () => {
     analysisBtn.disabled = false;
     generateNew.disabled = false;
+    sortBtn.disabled = false;
     userDefinedInput.disabled = false;
   }
   // Extract the number of the modified array from

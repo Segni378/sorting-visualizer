@@ -12,6 +12,7 @@ const menu = document.querySelector(".menu-icon");
 const algos = document.querySelector(".algos");
 const closeAnalysis = document.querySelector(".close-analysis");
 const analysisBtn = document.querySelector(".analysis-btn");
+const sortBtn = document.querySelector('.sort-btn')
 const generateNew = document.querySelector(".generate-new");
 const userDefinedInput = document.getElementById("user-input");
 
@@ -231,6 +232,7 @@ const sort = async() => {
     }
 
     generateNew.disabled = true;
+    sortBtn.disabled = true;
     userDefinedInput.disabled = true; 
     
     parseComparison.classList.add("active");

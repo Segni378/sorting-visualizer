@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
   --transition: all 0.3s ease-out;
@@ -12,29 +13,27 @@
 }
 body {
   background-color: lightgrey;
-  /* width: 100vw; */
   min-height: 100vh;
-  /* overflow: hidden; */
   overflow-x: hidden;
   position: relative;
-  
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
 }
 
 nav {
-  height: 30px;
+  height: 50px;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  padding-bottom: 10px;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  padding: 10px;
   max-width: 100%;
-  
+  border-bottom: 1px solid rgba(17, 17, 26, 0.1);
 }
 
 nav,
 .container,
 .algos {
   display: flex;
+  align-items: center;
   z-index:1200;
 }
 a {
@@ -69,7 +68,7 @@ a {
   background-color: #0bdee7;
 }
 
-// For quick sort
+/* // For quick sort */
 .bar.pivot {
   background-color: red;
 }
@@ -88,7 +87,6 @@ a {
 
 .nav-bar ul li {
   list-style-type: none;
-  margin: 10px;
   padding: 10px;
 }
 .logo {
@@ -105,13 +103,11 @@ a {
 }
 
 .analysis-btn-container {
-  margin-right: 50px;
-  margin-bottom: 10px;
-  
+  margin-right: 50px; 
 }
 .analysis-btn-container ul{
   display: flex;
-  align-items:flex-end;
+  align-items:center;
   justify-content: center;
   
 }
@@ -119,25 +115,24 @@ a {
   text-decoration: none;
   color: black;
 }
-.analysis-btn-container ul li:last-child {
-  padding-bottom: 20px;
-}
-.analysis-btn-container ul li:last-child a{
-  font-size: 17px;
-}
 .analysis-btn-container ul li a {
-  /* text-decoration: underline; */
   color: #000;
-  padding: 10px;
-  font-size: 18px;
 }
 .analysis-btn-container ul li a:hover {
   color: darkblue;
 }
-.sort-btn, .generate-new-btn {
-  background-color: #608FA0;
-  padding: 10px;
+.sort-btn, .generate-new {
+  padding: 8px 5px;
+  background-color: rgb(96, 143, 160);
+  color: lightgrey;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
+  min-width: max-content;
+  width: 80px;
+  margin: 0px !important;
+  font-family: "poppins", sans-serif;
+
 }
 .generate-new-btn {
   text-align: center;
@@ -240,7 +235,7 @@ a {
 
 #user-input {
   width: 200px;
-  height: 18px;
+  height: 30px;
   border: none;
   padding: 2px 5px 2px 5px;
   outline: none;
@@ -249,7 +244,7 @@ a {
 
 .service-container {
   display: flex;
-  height: 50px;
+  cursor: pointer;
   align-items: center;
   margin-bottom: 15px;
   
@@ -257,7 +252,7 @@ a {
 .show-service {
   background-color: rgb(94, 125, 136);
   width: 50px;
-  height: 60px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -291,7 +286,6 @@ a {
   height:10px;
 }
 .manage-speed span {
-  font-size: 18px;
   margin-right: 5px;
 }
 
@@ -383,6 +377,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   justify-content: center;
   align-items: center;
   margin: auto 0px;
+  cursor: pointer;
 }
 
 
@@ -404,13 +399,14 @@ input[type="range"]::-webkit-slider-runnable-track {
   background-color: #608FA0;
   border:none;
   border-radius: 5px;
-  padding: 11px 13px 13px 13px;
-  margin-top: 10px;
+  padding: 8px 5px;
+  font-family: "poppins", sans-serif;
 }
 .analysis-btn:hover {
   cursor: pointer;
 }
 .analysis-btn:disabled .analysis-btn:hover, .analysis-btn:disabled{
+  color: #fff;
   background-color: rgba(0,0,0,0.5);
   cursor: default;
 }
@@ -430,12 +426,13 @@ input[type="range"]::-webkit-slider-runnable-track {
   margin-left: 40px;
   margin-top: 15px;
   margin-bottom:10px;
+  font-size: 12px;
 }
 .analysis-explanation ul li{
   margin-bottom: 10px;
 }
 .analysis-title h2, .analysis-explanation h2 {
-  font-size: 18px;
+  font-size: 14px;
 }
 .overlay {
   position: fixed;
@@ -461,10 +458,6 @@ input[type="range"]::-webkit-slider-runnable-track {
   .generate-new-btn {
     width: 150px;
   }
-  .sort-btn, .generate-new-btn {
-    height: 40px;
-  }
-  
 }
 @media (min-width: 1080px) and (max-width: 1280px) {
   .trace-code-container {
@@ -575,6 +568,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 .show-service, .hide-panel {
   width: 35px;
   height: 45px;
+  cursor: pointer;
 }
 }
 @media (max-width: 399px){ 

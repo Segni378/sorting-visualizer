@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting Visualizer</title>
     <link rel="stylesheet" href="styles.css">
-    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- nav bar -->
@@ -16,14 +18,16 @@
             <div class = "logo"><span>A</span>lgo<span>SI</span>mplified</div>
             <div>
                 <ul class = "algos">
-                    <li><a href="javascript:void(0)" class = "algo" title="Bubble Sort" onclick="chooseAlgo(0)">BUBBLE</a></li>
-                    <li><a href="javascript:void(0)" class = "algo" onClick="chooseAlgo(1)">SELECTION</a></li>
-                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(2)">INSERTION</a></li>
-                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(3)">MERGE</a></li>
-                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(4)">QUICK</a></li>
-                    <li class = "sort-btn"><a href="javascript:void(0)" class = "algo" onclick="sort()">SORT</a></li>
-                    <li class = "generate-new-btn"><button class = "algo generate-new" onclick="createBars()">GENERATE NEW</button></li>
-                    <li ><a href="about.html" class="algo about">ABOUT</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" title="Bubble Sort" onclick="chooseAlgo(0)">Bubble</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" onClick="chooseAlgo(1)">Selection</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(2)">Insertion</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(3)">Merge</a></li>
+                    <li><a href="javascript:void(0)" class = "algo" onclick="chooseAlgo(4)">Quick</a></li>
+                    <li>
+                        <button class = "algo sort-btn" onclick="sort()">Sort</button>
+                    </li>
+                    <li><button class = "algo generate-new" onclick="createBars()">Generate New</button></li>
+                    <li ><a href="about.html" class="algo about">About</a></li>
                 
                 </ul>
             </div>
@@ -34,9 +38,9 @@
         <div class = "analysis-btn-container">
            <ul>
                <li>
-                   <button class="analysis-btn" onclick="showAnalysiss();">ANALYSIS</button>  
+                   <button class="analysis-btn" onclick="showAnalysiss();">Analysis</button>  
                 </li>
-                <li><a href="about.html" onclick="chooseAlgo(4)">ABOUT</a></li>
+                <li><a href="about.html" onclick="chooseAlgo(4)">About</a></li>
            </ul>
         </div>
         <div class = "menu-icon"><i class="fa-solid fa-bars"></i></div>

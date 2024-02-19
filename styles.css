@@ -142,7 +142,7 @@ a {
 }
 .analysis-btn-container ul li button {
   text-decoration: none;
-  color: black;
+  color: #fff;
 }
 .analysis-btn-container ul li a {
   color: #000;
@@ -151,7 +151,7 @@ a {
   color: darkblue;
   cursor: pointer;
 }
-.sort-btn, .generate-new {
+.sort-btn, .generate-new, .analysis-btn {
   padding: 8px 5px;
   background-color: rgb(96, 143, 160);
   color: #fff;
@@ -164,24 +164,13 @@ a {
   font-family: "poppins", sans-serif;
 
 }
-.generate-new-btn {
+.sort-btn[disabled], .generate-new[disabled] {
+  color: darkgrey;
   text-align: center;
   position: relative;
 }
-.generate-new-btn button {
-  background-color: transparent;
-  border:none;
-  font-size: 15px;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
 
-}
-.generate-new-btn button:disabled .generate-new-btn,.generate-new-btn button:disabled{
-  background-color:transparent;
-  cursor: default;
-} 
-.algos .sort-btn:hover a, .algos .generate-new-btn:hover a{
+.algos .sort-btn:hover a, .algos .generate-new:hover a{
   border: none;
 }
 
@@ -205,8 +194,6 @@ a {
 
 .bar {
   width: 40px;
-  /* min-width: 10px; */
-  /* width:5%; */
   background-color: rgb(96, 143, 160);
   margin: 10px;
   text-align: center;
@@ -425,19 +412,11 @@ input[type="range"]::-webkit-slider-runnable-track {
 .analysis.hidden {
   display: none;
 }
-.analysis-btn {
-  background-color: #608FA0;
-  border:none;
-  border-radius: 5px;
-  padding: 8px 5px;
-  font-family: "poppins", sans-serif;
-}
 .analysis-btn:hover {
   cursor: pointer;
 }
-.analysis-btn:disabled .analysis-btn:hover, .analysis-btn:disabled{
-  color: #fff;
-  background-color: rgba(0,0,0,0.5);
+.analysis-btn[disabled], .analysis-btn:hover{
+  color: darkgrey;
   cursor: default;
 }
 .analysis {

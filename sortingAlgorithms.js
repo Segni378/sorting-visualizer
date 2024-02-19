@@ -458,7 +458,7 @@ class sortingAlgorithms {
     const colors = [
       {
         color: "red",
-        message: "pivote",
+        message: "pivot",
       },
       {
         color: "purple",

@@ -96,10 +96,6 @@ const bubbleSortAnalysis = (length) => {
     ul.appendChild(li1);
     li2.innerHTML = "The outer loop also performs <em>O(n)</em> comparisons deterministically.";
     ul.appendChild(li2);
-    li3.innerHTML = `Your outer loop runs ${length} times.`;
-    ul.appendChild(li3);
-    li4.innerHTML = `Your inner loop runs also ${length} times. So totally it runs for ${length * length} times. `;
-    ul.appendChild(li4);
     li5.innerHTML = `Which results in <em>O(n^2)</em> time complexity`;
      ul.appendChild(li5);
     analysisExp.appendChild(ul);

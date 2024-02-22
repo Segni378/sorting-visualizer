@@ -235,8 +235,10 @@ const sort = async() => {
     sortBtn.disabled = true;
     userDefinedInput.disabled = true; 
     
-    parseComparison.classList.add("active");
-    pseudoCode.classList.add("active");
+    if (window.getWidth() > 400) {
+      parseComparison.classList.add("active");
+      pseudoCode.classList.add("active");
+    }
     
     const algorithm = new sortingAlgorithms(list, time);
 
